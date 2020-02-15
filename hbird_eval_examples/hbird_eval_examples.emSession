@@ -77,6 +77,7 @@
  <Project>
   <ProjectSessionItem path="hbird_eval_examples"/>
   <ProjectSessionItem path="hbird_eval_examples;demo_eclic"/>
+  <ProjectSessionItem path="hbird_eval_examples;demo_eclic;application"/>
  </Project>
  <Register1>
   <RegisterWindow visibleNodes="ABI, RV32I/pc;ABI, RV32I/ra;ABI, RV32I/sp;ABI, RV32I/gp;ABI, RV32I/tp;ABI, RV32I/a0;ABI, RV32I/a1;ABI, RV32I/a2;ABI, RV32I/a3;ABI, RV32I/a4;ABI, RV32I/a5;ABI, RV32I/a6;ABI, RV32I/a7;ABI, RV32I/t0;ABI, RV32I/t1;ABI, RV32I/t2;ABI, RV32I/t3;ABI, RV32I/t4;ABI, RV32I/t5;ABI, RV32I/t6;ABI, RV32I/s0;ABI, RV32I/s1;ABI, RV32I/s2;ABI, RV32I/s3;ABI, RV32I/s4;ABI, RV32I/s5;ABI, RV32I/s6;ABI, RV32I/s7;ABI, RV32I/s8;ABI, RV32I/s9;ABI, RV32I/s10;ABI, RV32I/s11;ABI, RV32E/pc;ABI, RV32E/ra;ABI, RV32E/sp;ABI, RV32E/gp;ABI, RV32E/tp;ABI, RV32E/a0;ABI, RV32E/a1;ABI, RV32E/a2;ABI, RV32E/a3;ABI, RV32E/a4;ABI, RV32E/a5;ABI, RV32E/t0;ABI, RV32E/t1;ABI, RV32E/t2;ABI, RV32E/s0;ABI, RV32E/s1;CPU/pc;CPU/ra;CPU/sp;CPU/gp;CPU/tp;CPU/t0;CPU/t1;CPU/t2;CPU/s0;CPU/s1;CPU/a0;CPU/a1;CPU/a2;CPU/a3;CPU/a4;CPU/a5;CPU/a6;CPU/a7;CPU/s2;CPU/s3;CPU/s4;CPU/s5;CPU/s6;CPU/s7;CPU/s8;CPU/s9;CPU/s10;CPU/s11;CPU/t3;CPU/t4;CPU/t5;CPU/t6" binaryNodes="" asciiNodes="" openNodes="ABI, RV32I;ABI, RV32E;CPU" name="rvstar_examples" decimalNodes="" octalNodes="" unsignedNodes=""/>
