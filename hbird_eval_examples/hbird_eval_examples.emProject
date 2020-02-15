@@ -1,0 +1,1061 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="hbird_eval_examples" target="20" version="2">
+  <configuration
+    Name="ILM"
+    build_toolchain_directory="$(StudioDir)/Nuclei_Toolchain/gcc/bin"
+    c_preprocessor_definitions="DOWNLOAD_MODE=DOWNLOAD_MODE_ILM"
+    c_user_include_directories=". ;$(SolutionDir)/../nuclei-sdk/NMSIS/Include;$(SolutionDir)/../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include;$(SolutionDir)/../nuclei-sdk/SoC/hbird/Common/Include;$(SolutionDir)/../uclei-sdk/SoC/hbird/Common/Source/Stubs"
+    debug_target_connection="GDB Server"
+    gcc_debugging_level="None"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="Level 1"
+    gdb_server_allow_memory_access_during_execution="Yes"
+    gdb_server_autostart_server="Yes"
+    gdb_server_command_line="&quot;$(StudioDir)/Nuclei_Toolchain/openocd/bin/openocd&quot; -f &quot;$(SolutionDir)/../nuclei-sdk/SoC/hbird/Board/hbird_eval/openocd_hbird.cfg&quot;"
+    gdb_server_ignore_checksum_errors="No"
+    gdb_server_port="3333"
+    gdb_server_register_access="General and Individual"
+    gdb_server_reset_command="reset halt"
+    gdb_server_type="OpenOCD"
+    link_linker_script_file="$(SolutionDir)/../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_ilm.ld"
+    link_use_linker_script_file="Yes"
+    target_device_name="N307" />
+  <configuration
+    Name="FLASH"
+    build_toolchain_directory="$(StudioDir)/Nuclei_Toolchain/gcc/bin"
+    c_preprocessor_definitions="DOWNLOAD_MODE=DOWNLOAD_MODE_FLASH"
+    c_user_include_directories=". ;$(SolutionDir)/../nuclei-sdk/NMSIS/Include;$(SolutionDir)/../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include;$(SolutionDir)/../nuclei-sdk/SoC/hbird/Common/Include;$(SolutionDir)/../uclei-sdk/SoC/hbird/Common/Source/Stubs"
+    debug_target_connection="GDB Server"
+    gdb_server_allow_memory_access_during_execution="Yes"
+    gdb_server_autostart_server="Yes"
+    gdb_server_command_line="&quot;$(StudioDir)/Nuclei_Toolchain/openocd/bin/openocd&quot; -f &quot;$(SolutionDir)/../nuclei-sdk/SoC/hbird/Board/hbird_eval/openocd_hbird.cfg&quot;"
+    gdb_server_ignore_checksum_errors="No"
+    gdb_server_port="3333"
+    gdb_server_register_access="General and Individual"
+    gdb_server_reset_command="reset halt"
+    gdb_server_type="OpenOCD"
+    link_linker_script_file="$(SolutionDir)/../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flash.ld"
+    link_use_linker_script_file="Yes"
+    target_device_name="N307" />
+  <configuration
+    Name="FLASHXIP"
+    build_toolchain_directory="$(StudioDir)/Nuclei_Toolchain/gcc/bin"
+    c_preprocessor_definitions="DOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP"
+    c_user_include_directories=". ;$(SolutionDir)/../nuclei-sdk/NMSIS/Include;$(SolutionDir)/../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include;$(SolutionDir)/../nuclei-sdk/SoC/hbird/Common/Include;$(SolutionDir)/../uclei-sdk/SoC/hbird/Common/Source/Stubs"
+    debug_target_connection="GDB Server"
+    gdb_server_allow_memory_access_during_execution="Yes"
+    gdb_server_autostart_server="Yes"
+    gdb_server_command_line="&quot;$(StudioDir)/Nuclei_Toolchain/openocd/bin/openocd&quot; -f &quot;$(SolutionDir)/../nuclei-sdk/SoC/hbird/Board/hbird_eval/openocd_hbird.cfg&quot;"
+    gdb_server_ignore_checksum_errors="No"
+    gdb_server_port="3333"
+    gdb_server_register_access="General and Individual"
+    gdb_server_reset_command="reset halt"
+    gdb_server_type="OpenOCD"
+    link_linker_script_file="$(SolutionDir)/../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flashxip.ld"
+    link_use_linker_script_file="Yes"
+    target_device_name="N307" />
+  <project Name="coremark">
+    <configuration
+      Name="Common"
+      arm_linker_heap_size="1024"
+      arm_linker_stack_size="1024"
+      linker_output_format="hex"
+      linker_section_placement_file="Setup/flash_placement_riscv.xml"
+      linker_section_placements_segments="FLASH1 RX 0x00000000 0x00100000;RAM1 RWX 0x20000000 0x00010000"
+      project_directory=""
+      project_type="Executable"
+      target_device_name="N307" />
+    <folder Name="nuclei_sdk">
+      <folder Name="NMSIS">
+        <folder Name="Include">
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_compatiable.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_base.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_cache.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_dsp.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_eclic.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_fpu.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_pmp.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_timer.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_compiler.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_core.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_gcc.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_version.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/riscv_bits.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/riscv_encoding.h" />
+        </folder>
+      </folder>
+      <folder Name="SoC">
+        <folder Name="hbird">
+          <folder Name="Board">
+            <folder Name="hbird_eval">
+              <folder Name="Include">
+                <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include/board_hbird_eval.h" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include/nuclei_sdk_hal.h" />
+              </folder>
+              <folder Name="Source">
+                <folder Name="GCC">
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flash.ld" />
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flashxip.ld" />
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_ilm.ld" />
+                </folder>
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/openocd_hbird.cfg" />
+            </folder>
+          </folder>
+          <folder Name="Common">
+            <folder Name="Include">
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_gpio.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_i2c.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_pwm.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_spi.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_uart.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/nuclei_sdk_soc.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/system_hbird.h" />
+            </folder>
+            <folder Name="Source">
+              <folder Name="Drivers">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Drivers/hbird_gpio.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Drivers/hbird_uart.c" />
+              </folder>
+              <folder Name="GCC">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/GCC/intexc_hbird.S" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/GCC/startup_hbird.S" />
+              </folder>
+              <folder Name="Stubs">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/close.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/fstat.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/gettimeofday.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/isatty.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/lseek.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/read.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/sbrk.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/stub.h" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/write.c" />
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/hbird_common.c" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/system_hbird.c" />
+            </folder>
+          </folder>
+        </folder>
+      </folder>
+    </folder>
+    <folder Name="application">
+      <file file_name="../nuclei-sdk/application/baremetal/benchmark/coremark/core_list_join.c" />
+      <file file_name="../nuclei-sdk/application/baremetal/benchmark/coremark/core_main.c" />
+      <file file_name="../nuclei-sdk/application/baremetal/benchmark/coremark/core_matrix.c" />
+      <file file_name="../nuclei-sdk/application/baremetal/benchmark/coremark/core_portme.c" />
+      <file file_name="../nuclei-sdk/application/baremetal/benchmark/coremark/core_portme.h" />
+      <file file_name="../nuclei-sdk/application/baremetal/benchmark/coremark/core_state.c" />
+      <file file_name="../nuclei-sdk/application/baremetal/benchmark/coremark/core_util.c" />
+      <file file_name="../nuclei-sdk/application/baremetal/benchmark/coremark/coremark.h" />
+    </folder>
+    <configuration
+      Name="ILM"
+      build_toolchain_directory="$(StudioDir)/Nuclei_Toolchain/gcc/bin"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/application/baremetal/benchmark/coremark"
+      debug_target_connection="GDB Server"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4 -DFLAGS_STR=\&quot;&quot;-O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4&quot;\&quot; -DITERATIONS=100 -DPERFORMANCE_RUN=1 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4 -DFLAGS_STR=\&quot;&quot;-O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4&quot;\&quot; -DITERATIONS=100 -DPERFORMANCE_RUN=1 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4 -DFLAGS_STR=\&quot;&quot;-O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4&quot;\&quot; -DITERATIONS=100 -DPERFORMANCE_RUN=1 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot;  -nostartfiles -Wl,-M,-Map=coremark.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs -u _printf_float --specs=nosys.specs "
+      gdb_server_command_line="&quot;$(StudioDir)/Nuclei_Toolchain/openocd/bin/openocd&quot; -f &quot;$(SolutionDir)/../nuclei-sdk/SoC/hbird/Board/hbird_eval/openocd_hbird.cfg&quot;"
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="FLASH"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/application/baremetal/benchmark/coremark"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4 -DFLAGS_STR=\&quot;&quot;-O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4&quot;\&quot; -DITERATIONS=100 -DPERFORMANCE_RUN=1 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4 -DFLAGS_STR=\&quot;&quot;-O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4&quot;\&quot; -DITERATIONS=100 -DPERFORMANCE_RUN=1 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4 -DFLAGS_STR=\&quot;&quot;-O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4&quot;\&quot; -DITERATIONS=100 -DPERFORMANCE_RUN=1 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASH -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot;  -nostartfiles -Wl,-M,-Map=coremark.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs -u _printf_float --specs=nosys.specs "
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="FLASHXIP"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/application/baremetal/benchmark/coremark"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4 -DFLAGS_STR=\&quot;&quot;-O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4&quot;\&quot; -DITERATIONS=100 -DPERFORMANCE_RUN=1 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4 -DFLAGS_STR=\&quot;&quot;-O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4&quot;\&quot; -DITERATIONS=100 -DPERFORMANCE_RUN=1 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4 -DFLAGS_STR=\&quot;&quot;-O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4&quot;\&quot; -DITERATIONS=100 -DPERFORMANCE_RUN=1 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot;  -nostartfiles -Wl,-M,-Map=coremark.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs -u _printf_float --specs=nosys.specs "
+      project_type="Externally Built Executable" />
+  </project>
+  <project Name="dhrystone">
+    <configuration
+      Name="Common"
+      arm_linker_heap_size="1024"
+      arm_linker_stack_size="1024"
+      linker_output_format="hex"
+      linker_section_placement_file="Setup/flash_placement_riscv.xml"
+      linker_section_placements_segments="FLASH1 RX 0x00000000 0x00100000;RAM1 RWX 0x20000000 0x00010000"
+      project_directory=""
+      project_type="Executable"
+      target_device_name="N307" />
+    <folder Name="nuclei_sdk">
+      <folder Name="NMSIS">
+        <folder Name="Include">
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_compatiable.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_base.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_cache.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_dsp.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_eclic.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_fpu.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_pmp.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_timer.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_compiler.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_core.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_gcc.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_version.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/riscv_bits.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/riscv_encoding.h" />
+        </folder>
+      </folder>
+      <folder Name="SoC">
+        <folder Name="hbird">
+          <folder Name="Board">
+            <folder Name="hbird_eval">
+              <folder Name="Include">
+                <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include/board_hbird_eval.h" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include/nuclei_sdk_hal.h" />
+              </folder>
+              <folder Name="Source">
+                <folder Name="GCC">
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flash.ld" />
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flashxip.ld" />
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_ilm.ld" />
+                </folder>
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/openocd_hbird.cfg" />
+            </folder>
+          </folder>
+          <folder Name="Common">
+            <folder Name="Include">
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_gpio.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_i2c.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_pwm.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_spi.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_uart.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/nuclei_sdk_soc.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/system_hbird.h" />
+            </folder>
+            <folder Name="Source">
+              <folder Name="Drivers">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Drivers/hbird_gpio.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Drivers/hbird_uart.c" />
+              </folder>
+              <folder Name="GCC">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/GCC/intexc_hbird.S" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/GCC/startup_hbird.S" />
+              </folder>
+              <folder Name="Stubs">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/close.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/fstat.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/gettimeofday.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/isatty.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/lseek.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/read.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/sbrk.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/stub.h" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/write.c" />
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/hbird_common.c" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/system_hbird.c" />
+            </folder>
+          </folder>
+        </folder>
+      </folder>
+    </folder>
+    <folder Name="application">
+      <file file_name="../nuclei-sdk/application/baremetal/benchmark/dhrystone/dhry.h" />
+      <file file_name="../nuclei-sdk/application/baremetal/benchmark/dhrystone/dhry_1.c" />
+      <file file_name="../nuclei-sdk/application/baremetal/benchmark/dhrystone/dhry_2.c" />
+      <file file_name="../nuclei-sdk/application/baremetal/benchmark/dhrystone/dhry_stubs.c" />
+    </folder>
+    <configuration
+      Name="ILM"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/application/baremetal/benchmark/dhrystone"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -O3 -fno-inline -funroll-loops -Wno-implicit -mexplicit-relocs  -fno-builtin-printf -fno-common -falign-functions=4 -falign-jumps=4 -falign-loops=4 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -O3 -fno-inline -funroll-loops -Wno-implicit -mexplicit-relocs  -fno-builtin-printf -fno-common -falign-functions=4 -falign-jumps=4 -falign-loops=4 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -O3 -fno-inline -funroll-loops -Wno-implicit -mexplicit-relocs  -fno-builtin-printf -fno-common -falign-functions=4 -falign-jumps=4 -falign-loops=4 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_ILM -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=dhrystone.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs -u _printf_float --specs=nosys.specs  "
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="FLASH"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/application/baremetal/benchmark/dhrystone"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -O3 -fno-inline -funroll-loops -Wno-implicit -mexplicit-relocs  -fno-builtin-printf -fno-common -falign-functions=4 -falign-jumps=4 -falign-loops=4 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -O3 -fno-inline -funroll-loops -Wno-implicit -mexplicit-relocs  -fno-builtin-printf -fno-common -falign-functions=4 -falign-jumps=4 -falign-loops=4 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_clean_command=""
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -O3 -fno-inline -funroll-loops -Wno-implicit -mexplicit-relocs  -fno-builtin-printf -fno-common -falign-functions=4 -falign-jumps=4 -falign-loops=4 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASH -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=dhrystone.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs -u _printf_float --specs=nosys.specs  "
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="FLASHXIP"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/application/baremetal/benchmark/dhrystone"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -O3 -fno-inline -funroll-loops -Wno-implicit -mexplicit-relocs  -fno-builtin-printf -fno-common -falign-functions=4 -falign-jumps=4 -falign-loops=4 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -O3 -fno-inline -funroll-loops -Wno-implicit -mexplicit-relocs  -fno-builtin-printf -fno-common -falign-functions=4 -falign-jumps=4 -falign-loops=4 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -O3 -fno-inline -funroll-loops -Wno-implicit -mexplicit-relocs  -fno-builtin-printf -fno-common -falign-functions=4 -falign-jumps=4 -falign-loops=4 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=dhrystone.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs -u _printf_float --specs=nosys.specs  "
+      project_type="Externally Built Executable" />
+  </project>
+  <project Name="freertos_demo">
+    <configuration
+      Name="Common"
+      arm_linker_heap_size="1024"
+      arm_linker_stack_size="1024"
+      linker_output_format="hex"
+      linker_section_placement_file="Setup/flash_placement_riscv.xml"
+      linker_section_placements_segments="FLASH1 RX 0x00000000 0x00100000;RAM1 RWX 0x20000000 0x00010000"
+      project_directory=""
+      project_type="Executable"
+      target_device_name="N307" />
+    <configuration
+      Name="ILM"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/OS/FreeRTOS/Source/include;$(SolutionDir)/../nuclei-sdk/OS/FreeRTOS/Source/portable/GCC;$(SolutionDir)/../nuclei-sdk/application/freertos/demo"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_ILM -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=demo.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs "
+      project_type="Externally Built Executable" />
+    <folder Name="application">
+      <file file_name="../nuclei-sdk/application/freertos/demo/FreeRTOSConfig.h" />
+      <file file_name="../nuclei-sdk/application/freertos/demo/main.c" />
+    </folder>
+    <folder Name="nuclei_sdk">
+      <folder Name="NMSIS">
+        <folder Name="Include">
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_compatiable.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_base.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_cache.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_dsp.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_eclic.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_fpu.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_pmp.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_timer.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_compiler.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_core.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_gcc.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_version.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/riscv_bits.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/riscv_encoding.h" />
+        </folder>
+      </folder>
+      <folder Name="SoC">
+        <folder Name="hbird">
+          <folder Name="Board">
+            <folder Name="hbird_eval">
+              <folder Name="Include">
+                <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include/board_hbird_eval.h" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include/nuclei_sdk_hal.h" />
+              </folder>
+              <folder Name="Source">
+                <folder Name="GCC">
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flash.ld" />
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flashxip.ld" />
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_ilm.ld" />
+                </folder>
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/openocd_hbird.cfg" />
+            </folder>
+          </folder>
+          <folder Name="Common">
+            <folder Name="Include">
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_gpio.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_i2c.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_pwm.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_spi.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_uart.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/nuclei_sdk_soc.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/system_hbird.h" />
+            </folder>
+            <folder Name="Source">
+              <folder Name="Drivers">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Drivers/hbird_gpio.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Drivers/hbird_uart.c" />
+              </folder>
+              <folder Name="GCC">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/GCC/intexc_hbird.S" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/GCC/startup_hbird.S" />
+              </folder>
+              <folder Name="Stubs">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/close.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/fstat.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/gettimeofday.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/isatty.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/lseek.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/read.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/sbrk.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/stub.h" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/write.c" />
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/hbird_common.c" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/system_hbird.c" />
+            </folder>
+          </folder>
+        </folder>
+      </folder>
+      <folder Name="OS">
+        <folder Name="FreeRTOS">
+          <folder Name="License">
+            <file file_name="../nuclei-sdk/OS/FreeRTOS/License/license.txt" />
+          </folder>
+          <folder Name="Source">
+            <folder Name="include">
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/include/croutine.h" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/include/deprecated_definitions.h" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/include/event_groups.h" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/include/FreeRTOS.h" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/include/list.h" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/include/mpu_prototypes.h" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/include/mpu_wrappers.h" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/include/portable.h" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/include/projdefs.h" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/include/queue.h" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/include/semphr.h" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/include/StackMacros.h" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/include/stdint.readme" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/include/task.h" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/include/timers.h" />
+            </folder>
+            <folder Name="portable">
+              <folder Name="MemMang">
+                <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/portable/MemMang/heap_4.c" />
+              </folder>
+              <folder Name="GCC">
+                <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/portable/GCC/port.c" />
+                <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/portable/GCC/portasm.S" />
+                <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/portable/GCC/portmacro.h" />
+              </folder>
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/croutine.c" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/event_groups.c" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/list.c" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/queue.c" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/readme.txt" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/tasks.c" />
+              <file file_name="../nuclei-sdk/OS/FreeRTOS/Source/timers.c" />
+            </folder>
+          </folder>
+        </folder>
+      </folder>
+    </folder>
+    <configuration
+      Name="FLASHXIP"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/OS/FreeRTOS/Source/include;$(SolutionDir)/../nuclei-sdk/OS/FreeRTOS/Source/portable/GCC;$(SolutionDir)/../nuclei-sdk/application/freertos/demo"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=demo.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs "
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="FLASH"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/OS/FreeRTOS/Source/include;$(SolutionDir)/../nuclei-sdk/OS/FreeRTOS/Source/portable/GCC;$(SolutionDir)/../nuclei-sdk/application/freertos/demo"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASH -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=demo.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs "
+      project_type="Externally Built Executable" />
+  </project>
+  <project Name="helloworld">
+    <configuration
+      Name="Common"
+      arm_linker_heap_size="1024"
+      arm_linker_stack_size="1024"
+      linker_output_format="hex"
+      linker_section_placement_file="Setup/flash_placement_riscv.xml"
+      linker_section_placements_segments="FLASH1 RX 0x00000000 0x00100000;RAM1 RWX 0x20000000 0x00010000"
+      project_directory=""
+      project_type="Executable"
+      target_device_name="N307" />
+    <folder Name="nuclei_sdk">
+      <folder Name="NMSIS">
+        <folder Name="Include">
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_compatiable.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_base.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_cache.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_dsp.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_eclic.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_fpu.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_pmp.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_timer.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_compiler.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_core.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_gcc.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_version.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/riscv_bits.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/riscv_encoding.h" />
+        </folder>
+      </folder>
+      <folder Name="SoC">
+        <folder Name="hbird">
+          <folder Name="Board">
+            <folder Name="hbird_eval">
+              <folder Name="Include">
+                <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include/board_hbird_eval.h" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include/nuclei_sdk_hal.h" />
+              </folder>
+              <folder Name="Source">
+                <folder Name="GCC">
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flash.ld" />
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flashxip.ld" />
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_ilm.ld" />
+                </folder>
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/openocd_hbird.cfg" />
+            </folder>
+          </folder>
+          <folder Name="Common">
+            <folder Name="Include">
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_gpio.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_i2c.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_pwm.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_spi.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_uart.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/nuclei_sdk_soc.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/system_hbird.h" />
+            </folder>
+            <folder Name="Source">
+              <folder Name="Drivers">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Drivers/hbird_gpio.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Drivers/hbird_uart.c" />
+              </folder>
+              <folder Name="GCC">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/GCC/intexc_hbird.S" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/GCC/startup_hbird.S" />
+              </folder>
+              <folder Name="Stubs">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/close.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/fstat.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/gettimeofday.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/isatty.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/lseek.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/read.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/sbrk.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/stub.h" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/write.c" />
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/hbird_common.c" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/system_hbird.c" />
+            </folder>
+          </folder>
+        </folder>
+      </folder>
+    </folder>
+    <folder Name="application">
+      <file file_name="../nuclei-sdk/application/baremetal/helloworld/hello_world.c" />
+    </folder>
+    <configuration
+      Name="FLASH"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASH -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=hello_world.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs"
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="FLASHXIP"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=hello_world.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs"
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="ILM"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_ILM -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=hello_world.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs"
+      gdb_server_command_line="&quot;$(StudioDir)/Nuclei_Toolchain/openocd/bin/openocd&quot; -f &quot;$(SolutionDir)/../nuclei-sdk/SoC/hbird/Board/hbird_eval/openocd_hbird.cfg&quot;"
+      project_type="Externally Built Executable" />
+  </project>
+  <project Name="timer_test">
+    <configuration
+      Name="Common"
+      arm_linker_heap_size="1024"
+      arm_linker_stack_size="1024"
+      linker_output_format="hex"
+      linker_section_placement_file="Setup/flash_placement_riscv.xml"
+      linker_section_placements_segments="FLASH1 RX 0x00000000 0x00100000;RAM1 RWX 0x20000000 0x00010000"
+      project_directory=""
+      project_type="Executable"
+      target_device_name="N307" />
+    <folder Name="nuclei_sdk">
+      <folder Name="NMSIS">
+        <folder Name="Include">
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_compatiable.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_base.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_cache.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_dsp.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_eclic.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_fpu.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_pmp.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_timer.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_compiler.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_core.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_gcc.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_version.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/riscv_bits.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/riscv_encoding.h" />
+        </folder>
+      </folder>
+      <folder Name="SoC">
+        <folder Name="hbird">
+          <folder Name="Board">
+            <folder Name="hbird_eval">
+              <folder Name="Include">
+                <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include/board_hbird_eval.h" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include/nuclei_sdk_hal.h" />
+              </folder>
+              <folder Name="Source">
+                <folder Name="GCC">
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flash.ld" />
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flashxip.ld" />
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_ilm.ld" />
+                </folder>
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/openocd_hbird.cfg" />
+            </folder>
+          </folder>
+          <folder Name="Common">
+            <folder Name="Include">
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_gpio.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_i2c.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_pwm.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_spi.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_uart.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/nuclei_sdk_soc.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/system_hbird.h" />
+            </folder>
+            <folder Name="Source">
+              <folder Name="Drivers">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Drivers/hbird_gpio.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Drivers/hbird_uart.c" />
+              </folder>
+              <folder Name="GCC">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/GCC/intexc_hbird.S" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/GCC/startup_hbird.S" />
+              </folder>
+              <folder Name="Stubs">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/close.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/fstat.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/gettimeofday.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/isatty.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/lseek.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/read.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/sbrk.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/stub.h" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/write.c" />
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/hbird_common.c" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/system_hbird.c" />
+            </folder>
+          </folder>
+        </folder>
+      </folder>
+    </folder>
+    <folder Name="application">
+      <file file_name="../nuclei-sdk/application/baremetal/timer_test/timer_test.c" />
+    </folder>
+    <configuration
+      Name="ILM"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_ILM -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=timer.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs"
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="FLASHXIP"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=timer.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs"
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="FLASH"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASH -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=timer.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs"
+      project_type="Externally Built Executable" />
+  </project>
+  <project Name="ucosii_demo">
+    <configuration
+      Name="Common"
+      arm_linker_heap_size="1024"
+      arm_linker_stack_size="1024"
+      linker_output_format="hex"
+      linker_section_placement_file="Setup/flash_placement_riscv.xml"
+      linker_section_placements_segments="FLASH1 RX 0x00000000 0x00100000;RAM1 RWX 0x20000000 0x00010000"
+      project_directory=""
+      project_type="Executable"
+      target_device_name="N307" />
+    <folder Name="nuclei_sdk">
+      <folder Name="NMSIS">
+        <folder Name="Include">
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_compatiable.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_base.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_cache.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_dsp.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_eclic.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_fpu.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_pmp.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_timer.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_compiler.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_core.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_gcc.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_version.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/riscv_bits.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/riscv_encoding.h" />
+        </folder>
+      </folder>
+      <folder Name="SoC">
+        <folder Name="hbird">
+          <folder Name="Board">
+            <folder Name="hbird_eval">
+              <folder Name="Include">
+                <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include/board_hbird_eval.h" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include/nuclei_sdk_hal.h" />
+              </folder>
+              <folder Name="Source">
+                <folder Name="GCC">
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flash.ld" />
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flashxip.ld" />
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_ilm.ld" />
+                </folder>
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/openocd_hbird.cfg" />
+            </folder>
+          </folder>
+          <folder Name="Common">
+            <folder Name="Include">
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_gpio.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_i2c.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_pwm.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_spi.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_uart.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/nuclei_sdk_soc.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/system_hbird.h" />
+            </folder>
+            <folder Name="Source">
+              <folder Name="Drivers">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Drivers/hbird_gpio.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Drivers/hbird_uart.c" />
+              </folder>
+              <folder Name="GCC">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/GCC/intexc_hbird.S" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/GCC/startup_hbird.S" />
+              </folder>
+              <folder Name="Stubs">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/close.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/fstat.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/gettimeofday.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/isatty.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/lseek.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/read.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/sbrk.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/stub.h" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/write.c" />
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/hbird_common.c" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/system_hbird.c" />
+            </folder>
+          </folder>
+        </folder>
+      </folder>
+      <folder Name="OS">
+        <folder Name="UCOSII">
+          <folder Name="arch">
+            <file file_name="../nuclei-sdk/OS/UCOSII/arch/os_cpu_a.S" />
+            <file file_name="../nuclei-sdk/OS/UCOSII/arch/os_cpu_c.c" />
+            <file file_name="../nuclei-sdk/OS/UCOSII/arch/os_cpu_port.c" />
+            <file file_name="../nuclei-sdk/OS/UCOSII/arch/os_cpu_port.h" />
+          </folder>
+          <folder Name="cfg">
+            <file file_name="../nuclei-sdk/OS/UCOSII/cfg/os_cpu.h" />
+          </folder>
+          <folder Name="source">
+            <file file_name="../nuclei-sdk/OS/UCOSII/source/os_cfg.h" />
+            <file file_name="../nuclei-sdk/OS/UCOSII/source/os_core.c" />
+            <file file_name="../nuclei-sdk/OS/UCOSII/source/os_dbg_r.c" />
+            <file file_name="../nuclei-sdk/OS/UCOSII/source/os_flag.c" />
+            <file file_name="../nuclei-sdk/OS/UCOSII/source/os_mbox.c" />
+            <file file_name="../nuclei-sdk/OS/UCOSII/source/os_mem.c" />
+            <file file_name="../nuclei-sdk/OS/UCOSII/source/os_mutex.c" />
+            <file file_name="../nuclei-sdk/OS/UCOSII/source/os_q.c" />
+            <file file_name="../nuclei-sdk/OS/UCOSII/source/os_sem.c" />
+            <file file_name="../nuclei-sdk/OS/UCOSII/source/os_task.c" />
+            <file file_name="../nuclei-sdk/OS/UCOSII/source/os_time.c" />
+            <file file_name="../nuclei-sdk/OS/UCOSII/source/os_tmr.c" />
+            <file file_name="../nuclei-sdk/OS/UCOSII/source/ucos_ii.h" />
+          </folder>
+        </folder>
+      </folder>
+    </folder>
+    <folder Name="application">
+      <file file_name="../nuclei-sdk/application/ucosii/demo/app_cfg.h" />
+      <file file_name="../nuclei-sdk/application/ucosii/demo/main.c" />
+    </folder>
+    <configuration
+      Name="ILM"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/OS/UCOSII/arch ;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/cfg;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/source;$(SolutionDir)/../nuclei-sdk/application/ucosii/demo"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_ILM -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=demo.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs "
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="FLASHXIP"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/OS/UCOSII/arch ;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/cfg;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/source;$(SolutionDir)/../nuclei-sdk/application/ucosii/demo"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=demo.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs "
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="FLASH"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/OS/UCOSII/arch ;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/cfg;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/source;$(SolutionDir)/../nuclei-sdk/application/ucosii/demo"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASH -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=demo.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs "
+      project_type="Externally Built Executable" />
+  </project>
+  <project Name="whetstone">
+    <configuration
+      Name="Common"
+      arm_linker_heap_size="1024"
+      arm_linker_stack_size="1024"
+      linker_output_format="hex"
+      linker_section_placement_file="Setup/flash_placement_riscv.xml"
+      linker_section_placements_segments="FLASH1 RX 0x00000000 0x00100000;RAM1 RWX 0x20000000 0x00010000"
+      project_directory=""
+      project_type="Executable"
+      target_device_name="N307" />
+    <folder Name="nuclei_sdk">
+      <folder Name="NMSIS">
+        <folder Name="Include">
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_compatiable.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_base.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_cache.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_dsp.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_eclic.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_fpu.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_pmp.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_timer.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_compiler.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_core.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_gcc.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_version.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/riscv_bits.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/riscv_encoding.h" />
+        </folder>
+      </folder>
+      <folder Name="SoC">
+        <folder Name="hbird">
+          <folder Name="Board">
+            <folder Name="hbird_eval">
+              <folder Name="Include">
+                <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include/board_hbird_eval.h" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include/nuclei_sdk_hal.h" />
+              </folder>
+              <folder Name="Source">
+                <folder Name="GCC">
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flash.ld" />
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flashxip.ld" />
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_ilm.ld" />
+                </folder>
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/openocd_hbird.cfg" />
+            </folder>
+          </folder>
+          <folder Name="Common">
+            <folder Name="Include">
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_gpio.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_i2c.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_pwm.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_spi.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_uart.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/nuclei_sdk_soc.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/system_hbird.h" />
+            </folder>
+            <folder Name="Source">
+              <folder Name="Drivers">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Drivers/hbird_gpio.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Drivers/hbird_uart.c" />
+              </folder>
+              <folder Name="GCC">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/GCC/intexc_hbird.S" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/GCC/startup_hbird.S" />
+              </folder>
+              <folder Name="Stubs">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/close.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/fstat.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/gettimeofday.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/isatty.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/lseek.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/read.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/sbrk.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/stub.h" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/write.c" />
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/hbird_common.c" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/system_hbird.c" />
+            </folder>
+          </folder>
+        </folder>
+      </folder>
+    </folder>
+    <folder Name="application">
+      <file file_name="../nuclei-sdk/application/baremetal/benchmark/whetstone/config.h" />
+      <file file_name="../nuclei-sdk/application/baremetal/benchmark/whetstone/cpuidc.c" />
+      <file file_name="../nuclei-sdk/application/baremetal/benchmark/whetstone/cpuidh.h" />
+      <file file_name="../nuclei-sdk/application/baremetal/benchmark/whetstone/whets.c" />
+    </folder>
+    <configuration
+      Name="FLASH"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/application/baremetal/benchmark/whetstone"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O3 -funroll-loops -fsingle-precision-constant -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O3 -funroll-loops -fsingle-precision-constant -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O3 -funroll-loops -fsingle-precision-constant -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASH -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -lm -nostartfiles -Wl,-M,-Map=whetstone.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs -u _printf_float --specs=nosys.specs "
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="FLASHXIP"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/application/baremetal/benchmark/whetstone"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O3 -funroll-loops -fsingle-precision-constant -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O3 -funroll-loops -fsingle-precision-constant -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O3 -funroll-loops -fsingle-precision-constant -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -lm -nostartfiles -Wl,-M,-Map=whetstone.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs -u _printf_float --specs=nosys.specs "
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="ILM"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/application/baremetal/benchmark/whetstone"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O3 -funroll-loops -fsingle-precision-constant -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O3 -funroll-loops -fsingle-precision-constant -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O3 -funroll-loops -fsingle-precision-constant -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_ILM -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -lm -nostartfiles -Wl,-M,-Map=whetstone.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs -u _printf_float --specs=nosys.specs "
+      project_type="Externally Built Executable" />
+  </project>
+  <project Name="demo_eclic">
+    <configuration
+      Name="Common"
+      arm_linker_heap_size="1024"
+      arm_linker_stack_size="1024"
+      linker_output_format="hex"
+      linker_section_placement_file="Setup/flash_placement_riscv.xml"
+      linker_section_placements_segments="FLASH1 RX 0x00000000 0x00100000;RAM1 RWX 0x20000000 0x00010000"
+      project_directory=""
+      project_type="Executable"
+      target_device_name="N307" />
+    <folder Name="nuclei_sdk">
+      <folder Name="NMSIS">
+        <folder Name="Include">
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_compatiable.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_base.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_cache.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_dsp.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_eclic.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_fpu.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_pmp.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/core_feature_timer.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_compiler.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_core.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_version.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/riscv_bits.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/riscv_encoding.h" />
+          <file file_name="../nuclei-sdk/NMSIS/Include/nmsis_gcc.h" />
+        </folder>
+      </folder>
+      <folder Name="SoC">
+        <folder Name="hbird">
+          <folder Name="Board">
+            <folder Name="hbird_eval">
+              <folder Name="Include">
+                <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include/board_hbird_eval.h" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Include/nuclei_sdk_hal.h" />
+              </folder>
+              <folder Name="Source">
+                <folder Name="GCC">
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flash.ld" />
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_flashxip.ld" />
+                  <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_ilm.ld" />
+                </folder>
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/hbird/Board/hbird_eval/openocd_hbird.cfg" />
+            </folder>
+          </folder>
+          <folder Name="Common">
+            <folder Name="Include">
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_gpio.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_i2c.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_pwm.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_spi.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/hbird_uart.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/nuclei_sdk_soc.h" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Include/system_hbird.h" />
+            </folder>
+            <folder Name="Source">
+              <folder Name="Drivers">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Drivers/hbird_gpio.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Drivers/hbird_uart.c" />
+              </folder>
+              <folder Name="GCC">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/GCC/intexc_hbird.S" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/GCC/startup_hbird.S" />
+              </folder>
+              <folder Name="Stubs">
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/close.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/fstat.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/gettimeofday.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/isatty.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/lseek.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/read.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/sbrk.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/stub.h" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/write.c">
+                  <configuration Name="ILM" build_exclude_from_build="No" />
+                </file>
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/hbird_common.c" />
+              <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/system_hbird.c" />
+            </folder>
+          </folder>
+        </folder>
+      </folder>
+    </folder>
+    <folder Name="application">
+      <file file_name="../nuclei-sdk/application/baremetal/demo_eclic/demo_eclic.c" />
+    </folder>
+    <configuration
+      Name="ILM"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_ILM -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=hello_world.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs"
+      gdb_server_allow_memory_access_during_execution="Yes"
+      gdb_server_autostart_server="Yes"
+      gdb_server_command_line="&quot;$(JLinkDir)/JLinkGDBServerCL&quot; -device &quot;$(DeviceName)&quot; -silent"
+      gdb_server_ignore_checksum_errors="No"
+      gdb_server_port="2331"
+      gdb_server_register_access="Individual Only"
+      gdb_server_reset_command="reset"
+      gdb_server_type="J-Link"
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="FLASH"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_ILM -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=hello_world.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs"
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="FLASHXIP"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_ILM -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -nostartfiles -Wl,-M,-Map=hello_world.map -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs"
+      project_type="Externally Built Executable" />
+  </project>
+</solution>
