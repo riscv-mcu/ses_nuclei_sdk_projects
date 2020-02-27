@@ -5,15 +5,64 @@ before_script:
     - source .ci/build_applications.sh
 
 stages:
+    - release
+    - deploy
     - build_hbird_eval
     - build_gd32vf103v_eval
     - build_gd32vf103v_rvstar
+
+deploy_doc:
+    stage: release
+    only:
+        refs:
+          - master
+        changes:
+          - doc/source/**/**/**/*
+    retry: 1
+    artifacts:
+        name: "nuclei_sdk_doc-${CI_COMMIT_SHA::8}"
+        paths:
+            - doc/build
+        expire_in: 2 day
+    script:
+        - cd doc
+        - pip3 install --user -r requirements.txt
+        - export PATH=$HOME/.local/bin:$PATH
+        - make clean
+        - make all
+        - ssh xl01 "rm -rf /home/xl_ci/doc_center/nuclei_sdk/*"
+        - ssh xl01 "mkdir -p /home/xl_ci/doc_center/nuclei_sdk/"
+        - cd build
+        - scp -r html xl01:/home/xl_ci/doc_center/nuclei_sdk
+        - cd ..
+          #- make linkcheck
+        - make latexpdf
+        - cp build/latex/*.pdf build/html/
+    tags:
+        - software-server
+
+
+deploy_website:
+    stage: deploy
+    when: on_success
+    retry: 1
+    only:
+        refs:
+          - master
+        changes:
+          - doc/source/**/**/**/*
+    script:
+        - ./.ci/ftp_deploy.sh $FTPUSER $FTPPWD $FTPSERVER doc/build/html nuclei_sdk
+    tags:
+        - software-server
+    dependencies:
+        - deploy_doc
 
 ## Jobs for board hbird_eval
 .build_hbird_eval_job_template: &build_hbird_eval_job_def
     stage: build_hbird_eval
     script:
-        - SOC=hbird BOARD=hbird_eval nsdk_build_directory    application
+        - FIND_IGNORE="! -wholename \"*dsp*\"" SOC=hbird BOARD=hbird_eval nsdk_build_directory    application
         - SOC=hbird BOARD=hbird_eval nsdk_build_directory    test
 
 # Build For HBird Evaluation Board with N307 Core, with Flash, FlashXIP, ILM Mode
@@ -80,18 +129,6 @@ build_hbird_eval_flashxip_nx600:
         - SOC=gd32vf103 BOARD=gd32vf103v_eval nsdk_build_directory      application
         - SOC=gd32vf103 BOARD=gd32vf103v_eval nsdk_build_directory    test
 
-#build_gd32vf103v_eval_ilm:
-#    variables:
-#        DOWNLOAD: "ilm"
-#        CORE: "n205"
-#    <<: *build_gd32vf103v_eval_job_def
-#
-#build_gd32vf103v_eval_flash:
-#    variables:
-#        DOWNLOAD: "flash"
-#        CORE: "n205"
-#    <<: *build_gd32vf103v_eval_job_def
-
 build_gd32vf103v_eval_flashxip:
     variables:
         DOWNLOAD: "flashxip"
@@ -104,18 +141,6 @@ build_gd32vf103v_eval_flashxip:
     script:
         - SOC=gd32vf103 BOARD=gd32vf103v_rvstar nsdk_build_directory    application
         - SOC=gd32vf103 BOARD=gd32vf103v_rvstar nsdk_build_directory    test
-
-#build_gd32vf103v_rvstar_ilm:
-#    variables:
-#        DOWNLOAD: "ilm"
-#        CORE: "n205"
-#    <<: *build_gd32vf103v_rvstar_job_def
-#
-#build_gd32vf103v_rvstar_flash:
-#    variables:
-#        DOWNLOAD: "flash"
-#        CORE: "n205"
-#    <<: *build_gd32vf103v_rvstar_job_def
 
 build_gd32vf103v_rvstar_flashxip:
     variables:

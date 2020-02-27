@@ -4,6 +4,7 @@
 *.elf
 *.diss
 *.map
+*.bin
 *.log
 .vscode
 
@@ -27,3 +28,6 @@ CTAGS
 *_labs
 Makefile.local
 Makefile.global
+
+doc/build/
+_build
