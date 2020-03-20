@@ -33,6 +33,8 @@ CTEST(eclic, en_dis_irq)
     ECLIC_SetPriorityIRQ(SysTimer_IRQn, 0);
     ASSERT_EQUAL(ECLIC_GetPriorityIRQ(SysTimer_IRQn), 0);
 
+    ECLIC_SetCfgNlbits(__ECLIC_INTCTLBITS - 1);
+
     ECLIC_SetPriorityIRQ(SysTimer_IRQn, 1);
     ASSERT_EQUAL(ECLIC_GetPriorityIRQ(SysTimer_IRQn), 1);
 
@@ -172,9 +174,10 @@ CTEST(eclic, reg_read_write)
     ECLIC_SetCfgNlbits(orig);
 
     orig = ECLIC_GetMth();
-    ECLIC_SetMth(orig + 1);
-    ASSERT_EQUAL(ECLIC_GetMth(), orig);
+    ECLIC_SetMth(255);
+    ASSERT_EQUAL(ECLIC_GetMth(), 255);
     ECLIC_SetMth(orig);
+    ASSERT_EQUAL(ECLIC_GetMth(), orig);
 
     ECLIC_GetTrigIRQ(SysTimer_IRQn);
     ECLIC_SetTrigIRQ(SysTimer_IRQn, ECLIC_NEGTIVE_EDGE_TRIGGER);
@@ -183,6 +186,8 @@ CTEST(eclic, reg_read_write)
     CTEST_LOG("CLICINTCTLBITS : %d", ECLIC_GetInfoCtlbits());
     CTEST_LOG("CLIC VERSION : 0x%x", ECLIC_GetInfoVer());
     CTEST_LOG("NUM_INTERRUPT : %d", ECLIC_GetInfoNum());
+    CTEST_LOG("MTH : %d", ECLIC_GetMth());
+    CTEST_LOG("NLBITS : %d", ECLIC_GetCfgNlbits());
 }
 
 CTEST(eclic, nmi_entry) {

@@ -1,8 +1,7 @@
 // See LICENSE for license details.
-#include "nuclei_sdk_soc.h"
 #include "nuclei_sdk_hal.h"
 #include <stdio.h>
-#define ECLIC_PRIGROUP_LEVEL3_PRIO1        3 
+
 void user_key_exti_config();
 void soc_timer_config();
 
@@ -14,6 +13,10 @@ void soc_timer_config();
   */
 int main(void)
 {
+    uint8_t timer_intlevel=1;
+    uint8_t exti_intlevel =2;
+    int32_t returnCode;
+
     /* Board Config */
     gd_rvstar_led_init(LED3);
     gd_rvstar_led_init(LED1);
@@ -21,21 +24,20 @@ int main(void)
 
     gd_rvstar_key_init(WAKEUP_KEY_GPIO_PORT,KEY_MODE_EXTI);
 
-    /*  Timer Config */
+    /* Timer Config */
     soc_timer_config();
 
     /* EXIT config */
     user_key_exti_config();
 
     /* ECLIC config */
-    __RV_CSR_SET(mstatus, MSTATUS_MIE);
-    ECLIC_SetCfgNlbits(ECLIC_PRIGROUP_LEVEL3_PRIO1);
-    ECLIC_EnableIRQ(EXTI0_IRQn);
-    ECLIC_SetPriorityIRQ(EXTI0_IRQn,0);
-    ECLIC_SetLevelIRQ(EXTI0_IRQn,2);
-    ECLIC_EnableIRQ(TIMER1_IRQn);
-    ECLIC_SetPriorityIRQ(TIMER1_IRQn,0);
-    ECLIC_SetLevelIRQ(TIMER1_IRQn,1);
+    returnCode = ECLIC_Register_IRQ(EXTI0_IRQn, ECLIC_NON_VECTOR_INTERRUPT,
+                    ECLIC_LEVEL_TRIGGER, exti_intlevel, 0, NULL);
+    returnCode = ECLIC_Register_IRQ(TIMER1_IRQn, ECLIC_NON_VECTOR_INTERRUPT,
+                    ECLIC_LEVEL_TRIGGER, timer_intlevel, 0, NULL);
+
+    /* Enable interrupts in general */
+    __enable_irq();
 
     /* Timer Start */
     timer_enable(TIMER1);
@@ -49,6 +51,7 @@ int main(void)
     	gd_rvstar_led_on(LED3);
     }
 
+    return 0;
 }
 
 
@@ -60,13 +63,13 @@ int main(void)
   */
 void soc_timer_config()
 {
+    timer_parameter_struct timer_initpara;
+
     /* ----------------------------------------------------------------------------
     TIMER1 Configuration:
     TIMER1CLK = SystemCoreClock/54000 = 2KHz.
+    TIMER1CAR = 20000
     ---------------------------------------------------------------------------- */
-    timer_oc_parameter_struct timer_ocinitpara;
-    timer_parameter_struct timer_initpara;
-
     rcu_periph_clock_enable(RCU_TIMER1);
 
     timer_deinit(TIMER1);
@@ -123,10 +126,10 @@ void EXTI0_IRQHandler()
             /* clear EXTI lines interrupt flag */
             exti_interrupt_flag_clear(WAKEUP_KEY_PIN);
 
-        	/* set led to BLUE */
-        	gd_rvstar_led_off(LED3);
-        	gd_rvstar_led_off(LED1);
-        	gd_rvstar_led_on(LED2);
+            /* set led to BLUE */
+            gd_rvstar_led_off(LED3);
+            gd_rvstar_led_off(LED1);
+            gd_rvstar_led_on(LED2);
             delay_1ms(1000);
         }
     }
@@ -141,7 +144,7 @@ void EXTI0_IRQHandler()
   */
 void TIMER1_IRQHandler()
 {
-	uint16_t cnt;
+    uint16_t cnt;
 
     if(SET == timer_interrupt_flag_get(TIMER1, TIMER_INT_FLAG_UP)){
         /* clear update interrupt bit */

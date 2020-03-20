@@ -17,26 +17,6 @@
       link_dependent_projects="No"
       project_type="Externally Built Executable" />
     <folder Name="nuclei_sdk">
-      <folder Name="NMSIS">
-        <folder Name="Core">
-          <folder Name="Include">
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
-          </folder>
-        </folder>
-      </folder>
       <folder Name="SoC">
         <folder Name="gd32vf103">
           <folder Name="Board">
@@ -164,6 +144,26 @@
           </folder>
         </folder>
       </folder>
+      <folder Name="NMSIS">
+        <folder Name="Core">
+          <folder Name="Include">
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
+          </folder>
+        </folder>
+      </folder>
     </folder>
     <folder Name="application">
       <file file_name="../nuclei-sdk/board-labs/rvstar/running_led/main.c" />
@@ -173,7 +173,7 @@
     Name="FLASHXIP"
     build_toolchain_directory="$(StudioDir)/Nuclei_Toolchain/gcc/bin"
     c_preprocessor_definitions="DOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP"
-    c_user_include_directories="$(SolutionDir)/../nuclei-sdk/NMSIS/Core/Include;$(SolutionDir)/../nuclei-sdk/SoC/gd32vf103/Board/gd32vf103v_rvstar/Include;$(SolutionDir)/../nuclei-sdk/SoC/gd32vf103/Common/Include;$(SolutionDir)/../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb;$(SolutionDir)/../uclei-sdk/SoC/gd32vf103/Common/Source/Stubs"
+    c_user_include_directories="$(SolutionDir)/../nuclei-sdk/NMSIS/Core/Include;$(SolutionDir)/../nuclei-sdk/SoC/gd32vf103/Board/gd32vf103v_rvstar/Include;$(SolutionDir)/../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb;$(SolutionDir)/../nuclei-sdk/SoC/gd32vf103/Common/Include;$(SolutionDir)/../uclei-sdk/SoC/gd32vf103/Common/Source/Stubs"
     debug_target_connection="GDB Server"
     external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32i -mabi=ilp32 -c $(AsmOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -o &quot;$(RelTargetPath)&quot;"
     external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32i -mabi=ilp32 -c -ffunction-sections -fdata-sections $(COptions) $(COnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
@@ -361,6 +361,7 @@
       external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32i -mabi=ilp32 -c $(AsmOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -o &quot;$(RelTargetPath)&quot;"
       external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32i -mabi=ilp32 -c -ffunction-sections -fdata-sections $(COptions) $(COnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
       external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -Wl,--gc-sections -nostartfiles -Wl,--start-group -lm -lc -lgcc -lnosys -T &quot;$(RelLinkerScriptPath)&quot; $(Objects) -o &quot;$(RelTargetPath)&quot; -Xlinker -Map=&quot;$(RelMapPath)&quot; -g -march=rv32i -mabi=ilp32"
+      gdb_server_command_line="&quot;$(StudioDir)/Nuclei_Toolchain/openocd/bin/openocd&quot; -f &quot;$(SolutionDir)/../nuclei-sdk/SoC/gd32vf103/Board/gd32vf103v_rvstar/openocd_gd32vf103.cfg&quot;"
       project_type="Externally Built Executable" />
   </project>
   <project Name="timer_pwm">
@@ -375,26 +376,6 @@
       project_type="Executable"
       target_device_name="GD32VF103VBT6" />
     <folder Name="nuclei_sdk">
-      <folder Name="NMSIS">
-        <folder Name="Core">
-          <folder Name="Include">
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
-          </folder>
-        </folder>
-      </folder>
       <folder Name="SoC">
         <folder Name="gd32vf103">
           <folder Name="Board">
@@ -519,6 +500,26 @@
               <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/gd32vf103_soc.c" />
               <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/system_gd32vf103.c" />
             </folder>
+          </folder>
+        </folder>
+      </folder>
+      <folder Name="NMSIS">
+        <folder Name="Core">
+          <folder Name="Include">
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
           </folder>
         </folder>
       </folder>
@@ -542,26 +543,6 @@
       project_type="Executable"
       target_device_name="GD32VF103VBT6" />
     <folder Name="nuclei_sdk">
-      <folder Name="NMSIS">
-        <folder Name="Core">
-          <folder Name="Include">
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
-          </folder>
-        </folder>
-      </folder>
       <folder Name="SoC">
         <folder Name="gd32vf103">
           <folder Name="Board">
@@ -689,6 +670,26 @@
           </folder>
         </folder>
       </folder>
+      <folder Name="NMSIS">
+        <folder Name="Core">
+          <folder Name="Include">
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
+          </folder>
+        </folder>
+      </folder>
     </folder>
     <folder Name="application">
       <file file_name="../nuclei-sdk/board-labs/rvstar/nesting_of_interrupts/main.c" />
@@ -696,5 +697,172 @@
     <configuration
       Name="FLASHXIP"
       project_type="Externally Built Executable" />
+  </project>
+  <project Name="vectored_interrupt">
+    <configuration
+      Name="Common"
+      arm_linker_heap_size="1024"
+      arm_linker_stack_size="1024"
+      linker_output_format="hex"
+      linker_section_placement_file="Setup/flash_placement_riscv.xml"
+      linker_section_placements_segments="FLASH1 RX 0x08000000 0x00020000;RAM1 RWX 0x20000000 0x00008000"
+      project_directory=""
+      project_type="Executable"
+      target_device_name="GD32VF103VBT6" />
+    <configuration
+      Name="FLASHXIP"
+      project_type="Externally Built Executable" />
+    <folder Name="nuclei_sdk">
+      <folder Name="SoC">
+        <folder Name="gd32vf103">
+          <folder Name="Board">
+            <folder Name="gd32vf103v_rvstar">
+              <folder Name="Include">
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Board/gd32vf103v_rvstar/Include/nuclei_sdk_hal.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Board/gd32vf103v_rvstar/Include/gd32vf103v_rvstar.h" />
+              </folder>
+              <folder Name="Source">
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Board/gd32vf103v_rvstar/Source/gd32vf103v_rvstar.c" />
+                <folder Name="GCC">
+                  <file file_name="../nuclei-sdk/SoC/gd32vf103/Board/gd32vf103v_rvstar/Source/GCC/gcc_gd32vf103_flashxip.ld" />
+                </folder>
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Board/gd32vf103v_rvstar/openocd_gd32vf103.cfg" />
+            </folder>
+          </folder>
+          <folder Name="Common">
+            <folder Name="Include">
+              <folder Name="Usb">
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/drv_usb_core.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/drv_usb_dev.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/drv_usb_host.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/drv_usb_hw.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/drv_usb_regs.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/drv_usbd_int.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/drv_usbh_int.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/usb_ch9_std.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/usb_conf.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/usbd_conf.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/usbd_core.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/usbd_enum.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/usbd_transc.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/usbh_conf.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/usbh_core.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/usbh_enum.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/usbh_pipe.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb/usbh_transc.h" />
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_adc.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_bkp.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_can.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_crc.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_dac.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_dbg.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_dma.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_exmc.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_exti.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_fmc.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_fwdgt.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_gpio.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_i2c.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_libopt.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_pmu.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_rcu.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_rtc.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_spi.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_timer.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_usart.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/gd32vf103_wwdgt.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/system_gd32vf103.h" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Include/nuclei_sdk_soc.h" />
+            </folder>
+            <folder Name="Source">
+              <folder Name="Drivers">
+                <folder Name="Usb">
+                  <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/Usb/drv_usb_core.c" />
+                  <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/Usb/drv_usb_dev.c" />
+                  <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/Usb/drv_usb_host.c" />
+                  <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/Usb/drv_usbd_int.c" />
+                  <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/Usb/drv_usbh_int.c" />
+                  <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/Usb/gd32vf103_usb_hw.c" />
+                  <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/Usb/usbd_core.c" />
+                  <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/Usb/usbd_enum.c" />
+                  <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/Usb/usbd_transc.c" />
+                  <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/Usb/usbh_core.c" />
+                  <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/Usb/usbh_enum.c" />
+                  <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/Usb/usbh_pipe.c" />
+                  <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/Usb/usbh_transc.c" />
+                </folder>
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_adc.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_bkp.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_can.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_crc.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_dac.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_dbg.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_dma.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_exmc.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_exti.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_fmc.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_fwdgt.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_gpio.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_i2c.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_pmu.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_rcu.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_rtc.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_spi.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_timer.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_usart.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Drivers/gd32vf103_wwdgt.c" />
+              </folder>
+              <folder Name="GCC">
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/GCC/intexc_gd32vf103.S" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/GCC/startup_gd32vf103.S" />
+              </folder>
+              <folder Name="Stubs">
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/close.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/fstat.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/gettimeofday.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/isatty.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/lseek.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/read.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/sbrk.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/stub.h" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/write.c">
+                  <configuration
+                    Name="FLASHXIP"
+                    build_exclude_from_build="No" />
+                </file>
+              </folder>
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/gd32vf103_soc.c" />
+              <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/system_gd32vf103.c" />
+            </folder>
+          </folder>
+        </folder>
+      </folder>
+      <folder Name="NMSIS">
+        <folder Name="Core">
+          <folder Name="Include">
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
+          </folder>
+        </folder>
+      </folder>
+    </folder>
+    <folder Name="application">
+      <file file_name="../nuclei-sdk/board-labs/rvstar/vectored_interrupt/main.c" />
+    </folder>
   </project>
 </solution>

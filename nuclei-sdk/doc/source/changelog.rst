@@ -3,6 +3,46 @@
 Changelog
 =========
 
+V0.2.2
+------
+
+This is release ``0.2.2`` of Nuclei SDK.
+
+* OS
+
+  - Update UCOSII portable code
+  - Now both FreeRTOS and UCOSII are using similar portable code,
+    which both use ``SysTimer Interrupt`` and ``SysTimer Software Interrupt``.
+
+* Documentation
+
+  - Update documentation about RTOS
+
+V0.2.1
+------
+
+This is release ``0.2.1`` of Nuclei SDK.
+
+* Build System
+
+  - Add extra linker options ``-u _isatty -u _write -u _sbrk -u _read -u _close -u _fstat -u _lseek``
+    in Makefile.conf to make sure if you pass extra ``-flto`` compile option, link phase will not fail
+
+* Documentation
+
+  - Add documentation about how to optimize for code size in application development, using ``demo_eclic``
+    as example.
+
+* OS
+
+  - Update FreeRTOS to version V10.3.1
+  - Update FreeRTOS portable code
+
+* NMSIS
+
+  - Update NMSIS to release ``v1.0.0-beta1``
+
+
 V0.2.0-alpha
 ------------
 

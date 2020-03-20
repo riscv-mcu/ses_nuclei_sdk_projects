@@ -1,5 +1,4 @@
 // See LICENSE for license details.
-#include "nuclei_sdk_soc.h"
 #include "nuclei_sdk_hal.h"
 #include <stdio.h>
 
@@ -44,6 +43,8 @@ int main(void)
     	    delay_1ms(5);
         }
     }
+
+    return 0;
 }
 
 /**

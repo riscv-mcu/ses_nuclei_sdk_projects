@@ -1,5 +1,4 @@
 // See LICENSE for license details.
-#include "nuclei_sdk_soc.h"
 #include "nuclei_sdk_hal.h"
 
 #include <stdio.h>
@@ -26,6 +25,8 @@ int main(void)
     gd_rvstar_key_init(WAKEUP_KEY_GPIO_PORT,KEY_MODE_EXTI);
 
     test();
+
+    return 0;
 }
 /**
     \brief      start to read key status and change led

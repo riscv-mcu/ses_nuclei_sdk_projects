@@ -66,26 +66,6 @@
       project_type="Executable"
       target_device_name="N307" />
     <folder Name="nuclei_sdk">
-      <folder Name="NMSIS">
-        <folder Name="Core">
-          <folder Name="Include">
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
-          </folder>
-        </folder>
-      </folder>
       <folder Name="SoC">
         <folder Name="hbird">
           <folder Name="Board">
@@ -138,6 +118,26 @@
               <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/hbird_common.c" />
               <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/system_hbird.c" />
             </folder>
+          </folder>
+        </folder>
+      </folder>
+      <folder Name="NMSIS">
+        <folder Name="Core">
+          <folder Name="Include">
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
           </folder>
         </folder>
       </folder>
@@ -177,7 +177,7 @@
       external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4 -DFLAGS_STR=\&quot;&quot;-O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4&quot;\&quot; -DITERATIONS=100 -DPERFORMANCE_RUN=1 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
       external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4 -DFLAGS_STR=\&quot;&quot;-O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4&quot;\&quot; -DITERATIONS=100 -DPERFORMANCE_RUN=1 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
       external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
-      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4 -DFLAGS_STR=\&quot;&quot;-O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4&quot;\&quot; -DITERATIONS=100 -DPERFORMANCE_RUN=1 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot;   -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs -u _printf_float --specs=nosys.specs "
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4 -DFLAGS_STR=\&quot;&quot;-O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4&quot;\&quot; -DITERATIONS=100 -DPERFORMANCE_RUN=1 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot;  -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs -u _printf_float --specs=nosys.specs "
       project_type="Externally Built Executable" />
   </project>
   <project Name="dhrystone">
@@ -192,26 +192,6 @@
       project_type="Executable"
       target_device_name="N307" />
     <folder Name="nuclei_sdk">
-      <folder Name="NMSIS">
-        <folder Name="Core">
-          <folder Name="Include">
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
-          </folder>
-        </folder>
-      </folder>
       <folder Name="SoC">
         <folder Name="hbird">
           <folder Name="Board">
@@ -264,6 +244,26 @@
               <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/hbird_common.c" />
               <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/system_hbird.c" />
             </folder>
+          </folder>
+        </folder>
+      </folder>
+      <folder Name="NMSIS">
+        <folder Name="Core">
+          <folder Name="Include">
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
           </folder>
         </folder>
       </folder>
@@ -324,26 +324,6 @@
       <file file_name="../nuclei-sdk/application/freertos/demo/main.c" />
     </folder>
     <folder Name="nuclei_sdk">
-      <folder Name="NMSIS">
-        <folder Name="Core">
-          <folder Name="Include">
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
-          </folder>
-        </folder>
-      </folder>
       <folder Name="SoC">
         <folder Name="hbird">
           <folder Name="Board">
@@ -442,6 +422,26 @@
           </folder>
         </folder>
       </folder>
+      <folder Name="NMSIS">
+        <folder Name="Core">
+          <folder Name="Include">
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
+          </folder>
+        </folder>
+      </folder>
     </folder>
     <configuration
       Name="FLASHXIP"
@@ -472,26 +472,6 @@
       project_type="Executable"
       target_device_name="N307" />
     <folder Name="nuclei_sdk">
-      <folder Name="NMSIS">
-        <folder Name="Core">
-          <folder Name="Include">
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
-          </folder>
-        </folder>
-      </folder>
       <folder Name="SoC">
         <folder Name="hbird">
           <folder Name="Board">
@@ -544,6 +524,26 @@
               <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/hbird_common.c" />
               <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/system_hbird.c" />
             </folder>
+          </folder>
+        </folder>
+      </folder>
+      <folder Name="NMSIS">
+        <folder Name="Core">
+          <folder Name="Include">
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
           </folder>
         </folder>
       </folder>
@@ -586,26 +586,6 @@
       project_type="Executable"
       target_device_name="N307" />
     <folder Name="nuclei_sdk">
-      <folder Name="NMSIS">
-        <folder Name="Core">
-          <folder Name="Include">
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
-          </folder>
-        </folder>
-      </folder>
       <folder Name="SoC">
         <folder Name="hbird">
           <folder Name="Board">
@@ -661,6 +641,26 @@
           </folder>
         </folder>
       </folder>
+      <folder Name="NMSIS">
+        <folder Name="Core">
+          <folder Name="Include">
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
+          </folder>
+        </folder>
+      </folder>
     </folder>
     <folder Name="application">
       <file file_name="../nuclei-sdk/application/baremetal/demo_timer/main.c" />
@@ -670,14 +670,14 @@
       external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
       external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
       external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
-      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_ILM -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_ILM -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot;  -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs"
       project_type="Externally Built Executable" />
     <configuration
       Name="FLASHXIP"
       external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
       external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
       external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
-      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot;  -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs"
       project_type="Externally Built Executable" />
     <configuration
       Name="FLASH"
@@ -699,26 +699,6 @@
       project_type="Executable"
       target_device_name="N307" />
     <folder Name="nuclei_sdk">
-      <folder Name="NMSIS">
-        <folder Name="Core">
-          <folder Name="Include">
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
-            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
-          </folder>
-        </folder>
-      </folder>
       <folder Name="SoC">
         <folder Name="hbird">
           <folder Name="Board">
@@ -802,48 +782,6 @@
           </folder>
         </folder>
       </folder>
-    </folder>
-    <folder Name="application">
-      <file file_name="../nuclei-sdk/application/ucosii/demo/app_cfg.h" />
-      <file file_name="../nuclei-sdk/application/ucosii/demo/main.c" />
-    </folder>
-    <configuration
-      Name="ILM"
-      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/OS/UCOSII/arch ;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/cfg;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/source;$(SolutionDir)/../nuclei-sdk/application/ucosii/demo"
-      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
-      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
-      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
-      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_ILM -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot;  -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs "
-      project_type="Externally Built Executable" />
-    <configuration
-      Name="FLASHXIP"
-      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/OS/UCOSII/arch ;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/cfg;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/source;$(SolutionDir)/../nuclei-sdk/application/ucosii/demo"
-      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
-      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
-      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
-      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot;  -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs "
-      project_type="Externally Built Executable" />
-    <configuration
-      Name="FLASH"
-      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/OS/UCOSII/arch ;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/cfg;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/source;$(SolutionDir)/../nuclei-sdk/application/ucosii/demo"
-      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
-      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
-      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
-      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASH -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot;  -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs "
-      project_type="Externally Built Executable" />
-  </project>
-  <project Name="whetstone">
-    <configuration
-      Name="Common"
-      arm_linker_heap_size="1024"
-      arm_linker_stack_size="1024"
-      linker_output_format="hex"
-      linker_section_placement_file="Setup/flash_placement_riscv.xml"
-      linker_section_placements_segments="FLASH1 RX 0x00000000 0x00100000;RAM1 RWX 0x20000000 0x00010000"
-      project_directory=""
-      project_type="Executable"
-      target_device_name="N307" />
-    <folder Name="nuclei_sdk">
       <folder Name="NMSIS">
         <folder Name="Core">
           <folder Name="Include">
@@ -864,6 +802,49 @@
           </folder>
         </folder>
       </folder>
+    </folder>
+    <folder Name="application">
+      <file file_name="../nuclei-sdk/application/ucosii/demo/app_cfg.h" />
+      <file file_name="../nuclei-sdk/application/ucosii/demo/main.c" />
+    </folder>
+    <configuration
+      Name="ILM"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/OS/UCOSII/arch;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/cfg;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/source;$(SolutionDir)/../nuclei-sdk/application/ucosii/demo"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_ILM -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs"
+      link_dependent_projects="No"
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="FLASHXIP"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/OS/UCOSII/arch;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/cfg;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/source;$(SolutionDir)/../nuclei-sdk/application/ucosii/demo"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot;  -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs "
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="FLASH"
+      c_user_include_directories="$(SolutionDir)/../nuclei-sdk/OS/UCOSII/arch;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/cfg;$(SolutionDir)/../nuclei-sdk/OS/UCOSII/source;$(SolutionDir)/../nuclei-sdk/application/ucosii/demo"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASH -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot;  -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs "
+      project_type="Externally Built Executable" />
+  </project>
+  <project Name="whetstone">
+    <configuration
+      Name="Common"
+      arm_linker_heap_size="1024"
+      arm_linker_stack_size="1024"
+      linker_output_format="hex"
+      linker_section_placement_file="Setup/flash_placement_riscv.xml"
+      linker_section_placements_segments="FLASH1 RX 0x00000000 0x00100000;RAM1 RWX 0x20000000 0x00010000"
+      project_directory=""
+      project_type="Executable"
+      target_device_name="N307" />
+    <folder Name="nuclei_sdk">
       <folder Name="SoC">
         <folder Name="hbird">
           <folder Name="Board">
@@ -916,6 +897,26 @@
               <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/hbird_common.c" />
               <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/system_hbird.c" />
             </folder>
+          </folder>
+        </folder>
+      </folder>
+      <folder Name="NMSIS">
+        <folder Name="Core">
+          <folder Name="Include">
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_compatiable.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_base.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_cache.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_dsp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_eclic.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_fpu.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_pmp.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/core_feature_timer.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_compiler.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_core.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_gcc.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/nmsis_version.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_bits.h" />
+            <file file_name="../nuclei-sdk/NMSIS/Core/Include/riscv_encoding.h" />
           </folder>
         </folder>
       </folder>
@@ -1069,7 +1070,7 @@
       external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
       external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;   -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
       external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
-      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_ILM -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot;  -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_ILM -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs"
       project_type="Externally Built Executable" />
   </project>
   <project Name="demo_dsp">
@@ -1079,7 +1080,7 @@
       arm_linker_stack_size="1024"
       linker_output_format="hex"
       linker_section_placement_file="Setup/flash_placement_riscv.xml"
-      linker_section_placements_segments="FLASH1 RX 0x00000000 0x00100000;RAM1 RWX 0x20000000 0x00010000"
+      linker_section_placements_segments="FLASH1 RX 0x20000000 0x00080000;RAM1 RWX 0x80000000 0x00010000"
       project_directory=""
       project_type="Executable"
       target_device_name="N307" />
@@ -1158,7 +1159,9 @@
                 <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/read.c" />
                 <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/sbrk.c" />
                 <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/stub.h" />
-                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/write.c" />
+                <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/Stubs/write.c">
+                  <configuration Name="ILM" build_exclude_from_build="No" />
+                </file>
               </folder>
               <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/hbird_common.c" />
               <file file_name="../nuclei-sdk/SoC/hbird/Common/Source/system_hbird.c" />
@@ -1167,34 +1170,31 @@
         </folder>
       </folder>
     </folder>
+    <configuration
+      Name="ILM"
+      c_user_include_directories=".;$(SolutionDir)/../nuclei-sdk/application/baremetal/demo_dsp;$(SolutionDir)/../nuclei-sdk/NMSIS/DSP/Include"
+      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O2 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O2 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O2 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_ILM -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs -L$(SolutionDir)/../nuclei-sdk/NMSIS/Library/DSP/GCC -lnmsis_dsp_rv32imafdc -lm"
+      project_type="Externally Built Executable" />
     <folder Name="application">
       <file file_name="../nuclei-sdk/application/baremetal/demo_dsp/main.c" />
       <file file_name="../nuclei-sdk/application/baremetal/demo_dsp/ref_mean.c" />
       <file file_name="../nuclei-sdk/application/baremetal/demo_dsp/ref_mean.h" />
     </folder>
     <configuration
-      Name="ILM"
-      c_user_include_directories=".;$(SolutionDir)/../nuclei-sdk/NMSIS/DSP/Include;$(SolutionDir)/../nuclei-sdk/application/baremetal/demo_dsp"
+      Name="FLASHXIP"
+      c_user_include_directories=".;$(SolutionDir)/../nuclei-sdk/application/baremetal/demo_dsp;$(SolutionDir)/../nuclei-sdk/NMSIS/DSP/Include"
       external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O2 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
       external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O2 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
-      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
-      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O2 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs  -L$(SolutionDir)/../nuclei-sdk/NMSIS/Library/DSP/GCC -lnmsis_dsp_rv32imafdc -lm"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O2 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs -L$(SolutionDir)/../nuclei-sdk/NMSIS/Library/DSP/GCC -lnmsis_dsp_rv32imafdc -lm"
       project_type="Externally Built Executable" />
     <configuration
       Name="FLASH"
-      c_user_include_directories=".;$(SolutionDir)/../nuclei-sdk/NMSIS/DSP/Include;$(SolutionDir)/../nuclei-sdk/application/baremetal/demo_dsp"
+      c_user_include_directories=".;$(SolutionDir)/../nuclei-sdk/application/baremetal/demo_dsp;$(SolutionDir)/../nuclei-sdk/NMSIS/DSP/Include"
       external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O2 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
       external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O2 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
-      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
-      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O2 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs  -L$(SolutionDir)/../nuclei-sdk/NMSIS/Library/DSP/GCC -lnmsis_dsp_rv32imafdc -lm"
-      project_type="Externally Built Executable" />
-    <configuration
-      Name="FLASHXIP"
-      c_user_include_directories=".;$(SolutionDir)/../nuclei-sdk/NMSIS/DSP/Include;$(SolutionDir)/../nuclei-sdk/application/baremetal/demo_dsp"
-      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O2 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
-      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O2 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common  $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
-      external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
-      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O2 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs  -L$(SolutionDir)/../nuclei-sdk/NMSIS/Library/DSP/GCC -lnmsis_dsp_rv32imafdc -lm"
+      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -O2 -g -march=rv32imafdc -mabi=ilp32d -mcmodel=medany -ffunction-sections -fdata-sections -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_FLASH -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; -Wl,--gc-sections -Wl,--check-sections --specs=nano.specs --specs=nosys.specs -L$(SolutionDir)/../nuclei-sdk/NMSIS/Library/DSP/GCC -lnmsis_dsp_rv32imafdc -lm"
       project_type="Externally Built Executable" />
   </project>
 </solution>

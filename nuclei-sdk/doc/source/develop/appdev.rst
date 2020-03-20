@@ -29,6 +29,13 @@ To develop a Nuclei SDK application from scratch, you can do the following steps
        include $(NUCLEI_SDK_ROOT)/Build/Makefile.base
 
 3. Copy or create your application code in new created directory.
+
+   .. note::
+
+      * If you just want to SoC related resource, you can include header file ``nuclei_sdk_soc.h`` in your application code.
+      * If you just want to SoC and Board related resource, you can include header file ``nuclei_sdk_hal.h`` in your application code.
+      * For simplity, we recomment you to use ``nuclei_sdk_hal.h`` header file
+
 4. Follow :ref:`develop_buildsystem` to change your application Makefile.
 
 .. _develop_appdev_addsrc:
@@ -91,6 +98,28 @@ If you want to add extra build options, you can use these makefile variables:
 * :ref:`develop_buildsystem_var_ldlibs`: This will add extra libraries need to be linked.
 * :ref:`develop_buildsystem_var_libdirs`: This will add extra library directories to be searched by linker.
 
+.. _develop_appdev_optimize_for_codesize:
+
+Optimize For Code Size
+----------------------
+
+If you want to optimize your application for code size, you set ``COMMON_FLAGS``
+in your application Makefile like this:
+
+.. code-block:: makefile
+
+    COMMON_FLAGS := -Os
+
+If you want to optimize code size even more, you use this link time optimization(LTO) as below:
+
+.. code-block:: makefile
+
+    COMMON_FLAGS := -Os -flto
+
+see :ref:`design_app_demo_eclic` for example usage of optimize for code size.
+
+For more details about gcc optimization, please refer to `Options That Control Optimization in GCC`_.
+
 .. _develop_appdev_linkscript:
 
 Change Link Script
@@ -116,3 +145,6 @@ Set Local Make Options For Your Application
 
 If you want to change the application level Make options,
 you can add the :ref:`develop_buildsystem_makefile_local`.
+
+
+.. _Options That Control Optimization in GCC: https://gcc.gnu.org/onlinedocs/gcc-9.2.0/gcc/Optimize-Options.html#Optimize-Options
