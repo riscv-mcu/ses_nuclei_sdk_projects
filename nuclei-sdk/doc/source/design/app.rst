@@ -360,10 +360,18 @@ In Nuclei SDK, we provided code and Makefile for this ``coremark`` application.
 You can also optimize the ``COMMON_FLAGS`` defined in coremark application Makefile
 to get different score number.
 
-* This application runs for 100 iterations, you can also change this in Makefile.
-  Change this ``-DITERATIONS=100`` to values such as ``-DITERATIONS=200``
+* By default, this application runs for 500 iterations, you can also change this in Makefile.
+  e.g. Change this ``-DITERATIONS=500`` to value such as ``-DITERATIONS=5000``
 * macro **PERFORMANCE_RUN=1** is defined
 * **PFLOAT = 1** is added in its Makefile to enable float value print
+
+.. note::
+
+   * Since for each SoC platforms, the CPU frequency is different, so user need to change
+     the ``ITERATIONS`` defined in Makefile to proper value to let the coremark run at least
+     10 seconds
+   * For example, for the ``gd32vf103`` based boards supported in Nuclei SDK, we suggest
+     to change ``-DITERATIONS=500`` to ``-DITERATIONS=5000``
 
 **How to run this application:**
 
@@ -372,6 +380,7 @@ to get different score number.
     # Assume that you can set up the Tools and Nuclei SDK environment
     # cd to the coremark directory
     cd application/baremetal/benchmark/coremark
+    # change ITERATIONS value in Makefile for gd32vf103 based board to 5000
     # Clean the application first
     make SOC=gd32vf103 BOARD=gd32vf103v_rvstar clean
     # Build and upload the application
@@ -381,36 +390,35 @@ to get different score number.
 
 .. code-block:: console
 
-    Nuclei SDK Build Time: Feb 21 2020, 12:5Nuclei SDK Build Time: Feb 21 2020, 14:13:24
+    Nuclei SDK Build Time: Mar 30 2020, 18:08:53
     Download Mode: FLASHXIP
-    CPU Frequency 108267326 Hz
-    Just turn on the cycles since this benchmark need to use counter to measure performance
+    CPU Frequency 107190000 Hz
+    Start to run coremark for 5000 iterations
     2K performance run parameters for coremark.
     CoreMark Size    : 666
-    Total ticks      : 32389933
-    Total time (secs): 1.196673
-    Iterations/Sec   : 83.565044
-    ERROR! Must execute for at least 10 secs for a valid result!
-    Iterations       : 100
+    Total ticks      : 1622809457
+    Total time (secs): 15.139593
+    Iterations/Sec   : 330.259868
+    Iterations       : 5000
     Compiler version : GCC9.2.0
-    Compiler flags   : -O2 -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4
+    Compiler flags   : -O2 -flto -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4
     Memory location  : STACK
     seedcrc          : 0xe9f5
     [0]crclist       : 0xe714
     [0]crcmatrix     : 0x1fd7
     [0]crcstate      : 0x8e3a
-    [0]crcfinal      : 0x988c
-    Errors detected
+    [0]crcfinal      : 0xbd59
+    Correct operation validated. See readme.txt for run and reporting rules.
+    CoreMark 1.0 : 330.259868 / GCC9.2.0 -O2 -flto -funroll-all-loops -finline-limit=600 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -funroll-loops -finline-functions -falign-functions=4 -falign-jumps=4 -falign-loops=4 / STACK
 
 
     Print Personal Added Addtional Info to Easy Visual Analysis
 
-         (Iterations is: 100
-         (total_ticks is: 10
-     (*) Assume the core running at 1 MHz
-         So the CoreMark/MHz can be caculated by:
-         (Iterations*1000000/total_ticks) = 3.087379 CoreMark/MHz
-
+        (Iterations is: 5000
+        (total_ticks is: 1622809457
+    (*) Assume the core running at 1 MHz
+        So the CoreMark/MHz can be caculated by:
+        (Iterations*1000000/total_ticks) = 3.081076 CoreMark/MHz
 
 dhrystone
 ~~~~~~~~~
@@ -650,8 +658,15 @@ This `ucosii demo application`_ is show basic ucosii task functions.
 In Nuclei SDK, we provided code and Makefile for this ``ucosii demo`` application.
 
 * **RTOS = UCOSII** is added in its Makefile to include UCOSII service
-* The **TICK_RATE_HZ** in ``app_cfg.h`` is set to 200, you can change it
+* The **OS_TICKS_PER_SEC** in ``os_cfg.h`` is by default set to 200, you can change it
   to other number according to your requirement.
+
+.. note:
+
+   * For Nuclei SDK release > v0.2.2, the UCOSII source code is replaced using the
+     version from https://github.com/SiliconLabs/uC-OS2/, and application development
+     for UCOSII is also changed, the ``app_cfg.h``, ``os_cfg.h`` and ``app_hooks.c`` files
+     are required in application source code.
 
 **How to run this application:**
 
@@ -707,6 +722,75 @@ In Nuclei SDK, we provided code and Makefile for this ``ucosii demo`` applicatio
     task2 is running... 12
 
 
+RT-Thread applications
+----------------------
+
+demo
+~~~~
+
+This `rt-thread demo application`_ is show basic rt-thread thread functions.
+
+* main function is a pre-created thread by RT-Thread
+* main thread will create 5 test threads using the same function ``thread_entry``
+
+In Nuclei SDK, we provided code and Makefile for this ``rtthread demo`` application.
+
+* **RTOS = RTThread** is added in its Makefile to include RT-Thread service
+* The **RT_TICK_PER_SECOND** in ``rtconfig.h`` is by default set to `200`, you can change it
+  to other number according to your requirement.
+
+
+**How to run this application:**
+
+.. code-block:: shell
+
+    # Assume that you can set up the Tools and Nuclei SDK environment
+    # cd to the rtthread demo directory
+    cd application/rtthread/demo
+    # Clean the application first
+    make SOC=gd32vf103 BOARD=gd32vf103v_rvstar clean
+    # Build and upload the application
+    make SOC=gd32vf103 BOARD=gd32vf103v_rvstar upload
+
+**Expected output as below:**
+
+.. code-block:: console
+
+    Nuclei SDK Build Time: Apr 14 2020, 10:14:30
+    Download Mode: FLASHXIP
+    CPU Frequency 108270000 Hz
+
+    \ | /
+    - RT -     Thread Operating System
+    / | \     3.1.3 build Apr 14 2020
+    2006 - 2019 Copyright by rt-thread team
+    Main thread count: 0
+    thread 0 count: 0
+    thread 1 count: 0
+    thread 2 count: 0
+    thread 3 count: 0
+    thread 4 count: 0
+    thread 0 count: 1
+    thread 1 count: 1
+    thread 2 count: 1
+    thread 3 count: 1
+    thread 4 count: 1
+    Main thread count: 1
+    thread 0 count: 2
+    thread 1 count: 2
+    thread 2 count: 2
+    thread 3 count: 2
+    thread 4 count: 2
+    thread 0 count: 3
+    thread 1 count: 3
+    thread 2 count: 3
+    thread 3 count: 3
+    thread 4 count: 3
+    Main thread count: 2
+    thread 0 count: 4
+    thread 1 count: 4
+
+
 .. _helloworld application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/baremetal/helloworld
 .. _demo_timer application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/baremetal/demo_timer
 .. _demo_eclic application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/baremetal/demo_eclic
@@ -716,3 +800,4 @@ In Nuclei SDK, we provided code and Makefile for this ``ucosii demo`` applicatio
 .. _whetstone benchmark application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/benchmark/whetstone
 .. _freertos demo application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/freertos/demo
 .. _ucosii demo application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/ucosii/demo
+.. _rt-thread demo application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/rtthread/demo

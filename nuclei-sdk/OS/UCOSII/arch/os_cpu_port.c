@@ -59,6 +59,8 @@ void vPortSetupTimerInterrupt( void );
 /*
  * Exception handlers.
  */
+#define xPortSysTickHandler     eclic_mtip_handler
+
 void xPortSysTickHandler( void );
 
 /*
@@ -71,7 +73,6 @@ extern void prvPortStartFirstTask( void ) __attribute__ (( naked ));
  */
 static void prvTaskExitError( void );
 
-#define xPortSysTickHandler     eclic_mtip_handler
 
 /*-----------------------------------------------------------*/
 
@@ -97,26 +98,65 @@ uint8_t uxMaxSysCallMTH = 255;
 
 /*-----------------------------------------------------------*/
 /*
- * See header file for description.
+ *********************************************************************************************************
+ *                                        INITIALIZE A TASK'S STACK
+ *
+ * Description: This function is called by either OSTaskCreate() or OSTaskCreateExt() to initialize the
+ *              stack frame of the task being created.  This function is highly processor specific.
+ *
+ * Arguments  : task          is a pointer to the task code
+ *
+ *              p_arg         is a pointer to a user supplied data area that will be passed to the task
+ *                            when the task first executes.
+ *
+ *              p_tos         is a pointer to the top of stack.  It is assumed that 'ptos' points to
+ *                            a 'free' entry on the task stack.  If OS_STK_GROWTH is set to 1 then
+ *                            'ptos' will contain the HIGHEST valid address of the stack.  Similarly, if
+ *                            OS_STK_GROWTH is set to 0, the 'ptos' will contains the LOWEST valid address
+ *                            of the stack.
+ *
+ *              opt           specifies options that can be used to alter the behavior of OSTaskStkInit().
+ *                            (see uCOS_II.H for OS_TASK_OPT_xxx).
+ *
+ * Returns    : Always returns the location of the new top-of-stack once the processor registers have
+ *              been placed on the stack in the proper order.
+ *
+ * Note(s)    : (1) Interrupts are enabled when task starts executing.
+ *
+ *              (2) There is no need to save register x0 since it is a hard-wired zero.
+ *
+ *              (3) RISC-V calling convention register usage:
+ *
+ *                    +-------------+-------------+----------------------------------+
+ *                    |  Register   |   ABI Name  | Description                      |
+ *                    +-------------+-------------+----------------------------------+
+ *                    |  x31 - x28  |   t6 - t3   | Temporaries                      |
+ *                    +-------------+-------------+----------------------------------+
+ *                    |  x27 - x18  |  s11 - s2   | Saved registers                  |
+ *                    +-------------+-------------+----------------------------------+
+ *                    |  x17 - x12  |   a7 - a2   | Function arguments               |
+ *                    +-------------+-------------+----------------------------------+
+ *                    |  x11 - x10  |   a1 - a0   | Function arguments/return values |
+ *                    +-------------+-------------+----------------------------------+
+ *                    |     x9      |     s1      | Saved register                   |
+ *                    +-------------+-------------+----------------------------------+
+ *                    |     x8      |    s0/fp    | Saved register/frame pointer     |
+ *                    +-------------+-------------+----------------------------------+
+ *                    |   x7 - x5   |   t2 - t0   | Temporaries                      |
+ *                    +-------------+-------------+----------------------------------+
+ *                    |     x4      |     tp      | Thread pointer                   |
+ *                    +-------------+-------------+----------------------------------+
+ *                    |     x3      |     gp      | Global pointer                   |
+ *                    +-------------+-------------+----------------------------------+
+ *                    |     x2      |     sp      | Stack pointer                    |
+ *                    +-------------+-------------+----------------------------------+
+ *                    |     x1      |     ra      | return address                   |
+ *                    +-------------+-------------+----------------------------------+
+ *                    |     x0      |    zero     | Hard-wired zero                  |
+ *                    +-------------+-------------+----------------------------------+
+ *
  * As per the standard RISC-V ABI pxTopcOfStack is passed in in a0, pxCode in
- * a1, and pvParameters in a2.  The new top of stack is passed out in a0.
- *
- * RISC-V maps registers to ABI names as follows (X1 to X31 integer registers
- * for the 'I' profile, X1 to X15 for the 'E' profile, currently I assumed).
- *
- * Register        ABI Name    Description                         Saver
- * x0              zero        Hard-wired zero                     -
- * x1              ra          Return address                      Caller
- * x2              sp          Stack pointer                       Callee
- * x3              gp          Global pointer                      -
- * x4              tp          Thread pointer                      -
- * x5-7            t0-2        Temporaries                         Caller
- * x8              s0/fp       Saved register/Frame pointer        Callee
- * x9              s1          Saved register                      Callee
- * x10-11          a0-1        Function Arguments/return values    Caller
- * x12-17          a2-7        Function arguments                  Caller
- * x18-27          s2-11       Saved registers                     Callee
- * x28-31          t3-6        Temporaries                         Caller
+ * a1, and pvParameters in a2. The new top of stack is passed out in a0.
  *
  * The RISC-V context is saved rtos tasks in the following stack frame,
  * where the global and thread pointers are currently assumed to be constant so
@@ -363,21 +403,36 @@ void xPortTaskSwitch( void )
 }
 /*-----------------------------------------------------------*/
 
+/*
+*********************************************************************************************************
+*                                          SYS TICK HANDLER
+*
+* Description: Handle the system tick (SysTick) interrupt, which is used to generate the uC/OS-II tick
+*              interrupt.
+*
+* Arguments  : None.
+*
+* Note(s)    : This function is defined with weak linking in 'riscv_hal_stubs.c' so that it can be
+*              overridden by the kernel port with same prototype
+*********************************************************************************************************
+*/
 void xPortSysTickHandler( void )
 {
+#if OS_CRITICAL_METHOD == 3u                   /* Allocate storage for CPU status register             */
+    OS_CPU_SR cpu_sr;
+#endif
     /* The SysTick runs at the lowest interrupt priority, so when this interrupt
     executes all interrupts must be unmasked.  There is therefore no need to
     save and then restore the interrupt mask value as its value is already
     known. */
-    portDISABLE_INTERRUPTS();
-    {
-        SysTick_Reload(SYSTICK_TICK_CONST);
-        /* Increment the RTOS tick. */
-        OSIntEnter();
-        OSTimeTick();
-        OSIntExit();
-    }
-    portENABLE_INTERRUPTS();
+    OS_ENTER_CRITICAL();
+    SysTick_Reload(SYSTICK_TICK_CONST);
+    OSIntEnter();                              /* Tell uC/OS-II that we are starting an ISR            */
+    OS_EXIT_CRITICAL();
+
+    OSTimeTick();                              /* Call uC/OS-II's OSTimeTick()                         */
+
+    OSIntExit();                               /* Tell uC/OS-II that we are leaving the ISR            */
 }
 
 /*-----------------------------------------------------------*/
