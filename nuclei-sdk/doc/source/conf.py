@@ -21,10 +21,10 @@ copyright = '2019-Present, Nuclei'
 author = 'Nuclei'
 
 # The short X.Y version
-version = '0.2.3'
+version = '0.2.5'
 
 # The full version, including alpha/beta/rc tags
-release = '0.2.3'
+release = '0.2.5'
 
 
 # -- General configuration ---------------------------------------------------
@@ -86,7 +86,7 @@ rst_prolog = """
 .. |NMSIS| replace:: `NMSIS`_
 .. _NMSIS: https://github.com/Nuclei-Software/NMSIS
 .. |nuclei_sdk| replace:: `Nuclei SDK`_
-.. _Nuclei SDK: https://github.com/Nuclei-Software/Nuclei-SDK
+.. _Nuclei SDK: https://github.com/Nuclei-Software/nuclei-sdk
 .. |nuclei_download_center| replace:: `Nuclei Download Center`_
 .. _Nuclei Download Center: https://nucleisys.com/download.php
 .. |github| replace:: `Github`_
@@ -94,23 +94,18 @@ rst_prolog = """
 .. |gitee| replace:: `Gitee`_
 .. _Gitee: https://gitee.com
 .. |github_nuclei_sdk| replace:: `Nuclei SDK in Github`_
-.. _Nuclei SDK in Github: https://github.com/Nuclei-Software/Nuclei-SDK
+.. _Nuclei SDK in Github: https://github.com/Nuclei-Software/nuclei-sdk
 .. |gitee_nuclei_sdk| replace:: `Nuclei SDK in Gitee`_
-.. _Nuclei SDK in Gitee: https://gitee.com/Nuclei-Software/Nuclei-SDK
+.. _Nuclei SDK in Gitee: https://gitee.com/Nuclei-Software/nuclei-sdk
 .. |github_nuclei_sdk_release| replace:: `Nuclei SDK Release in Github`_
 .. _Nuclei SDK Release in Github: https://github.com/Nuclei-Software/nuclei-sdk/releases
-.. |teraterm| replace:: `TeraTerm in Windows``
+.. |teraterm| replace:: `TeraTerm in Windows`_
 .. _TeraTerm in Windows: http://ttssh2.osdn.jp/
-.. |minicom| replace:: ``Minicom in Linux``
+.. |minicom| replace:: `Minicom in Linux`_
 .. _Minicom in Linux: https://help.ubuntu.com/community/Minicom
 """
 
 rst_epilog = """
-.. |nuclei_core| replace:: Nuclei N/NX Class Processors
-.. |nuclei_ncore| replace:: Nuclei N Class Processors
-.. |nuclei_nxcore| replace:: Nuclei NX Class Processors
-.. |nmsis_support_cores| replace:: N200, N300, N600, NX600
-.. |nmsis_core_defines| replace:: **NUCLEI_N200**, **NUCLEI_N300**, **NUCLEI_N600** or **NUCLEI_NX600**
 """
 # -- Extension configuration -------------------------------------------------
 

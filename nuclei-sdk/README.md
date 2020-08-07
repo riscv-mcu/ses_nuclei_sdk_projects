@@ -94,11 +94,11 @@ $NUCLEI_SDK_ROOT
 
   This directory contains all the supported SoCs for this Nuclei SDK, the directory name for SoC and its boards should always in lower case.
 
-  Here we mainly support Nuclei N200, N300, N600, NX600 cores running in Hummingbird FPGA evaluation board, the support package placed in *SoC/hbird/*.
+  Here we mainly support Nuclei processor cores running in Hummingbird FPGA evaluation board, the support package placed in *SoC/hbird/*.
 
-  In each SoC's include directory, *nuclei_sdk_soc.h* must be provided, and include the soc header file, for example, *SoC/Nuclei/Common/Include/nuclei_sdk_soc.h*.
+  In each SoC's include directory, *nuclei_sdk_soc.h* must be provided, and include the soc header file, for example, *SoC/hbird/Common/Include/nuclei_sdk_soc.h*.
 
-  In each SoC Board's include directory, *nuclei_sdk_hal.h* must be provided, and include the board header file, for example, *SoC/Nuclei/Board/hbird/Include/nuclei_sdk_hal.h*.
+  In each SoC Board's include directory, *nuclei_sdk_hal.h* must be provided, and include the board header file, for example, *SoC/hbird/Board/hbird_eval/Include/nuclei_sdk_hal.h*.
 
 * **Build**
 
@@ -223,6 +223,8 @@ $NUCLEI_SDK_ROOT
      - First open a new terminal in the same application folder and run: `make CORE=n305 DOWNLOAD=ilm run_openocd`
      - Then run this command `make CORE=n305 DOWNLOAD=ilm run_gdb` in the existing terminal, then you can debug it using gdb,
        if you want to load your program, you need to type `load` to achieve it.
+     - **Notice**: Since version 0.2.4, you can also pass extra `GDB_PORT=<portno>`, to change to use new gdb port other than default
+       `3333`, for example, `make CORE=n305 DOWNLOAD=ilm GDB_PORT=3344 run_openocd` and `make CORE=n305 DOWNLOAD=ilm GDB_PORT=3344 run_gdb`
    * (Option 2)If you want to debug your application for *CORE=n305 DOWNLOAD=ilm*:
      ~~~shell
      make CORE=n305 DOWNLOAD=ilm debug

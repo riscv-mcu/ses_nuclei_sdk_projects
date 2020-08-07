@@ -318,6 +318,9 @@ Here is a list of the :ref:`table_dev_buildsystem_4`.
 
    * The selected configuration is controlled by
      :ref:`develop_buildsystem_exposed_make_vars`
+   * For ``run_openocd`` and ``run_gdb`` target, if you want to
+     change a new gdb port, you can pass the variable
+     :ref:`develop_buildsystem_var_gdb_port`
 
 
 .. _develop_buildsystem_exposed_make_vars:
@@ -333,6 +336,7 @@ which can be passed via make command.
 * :ref:`develop_buildsystem_var_download`
 * :ref:`develop_buildsystem_var_core`
 * :ref:`develop_buildsystem_var_simulation`
+* :ref:`develop_buildsystem_var_gdb_port`
 * :ref:`develop_buildsystem_var_v`
 * :ref:`develop_buildsystem_var_silent`
 
@@ -478,7 +482,15 @@ Currently it has these cores supported as described in table
    n305      rv32imac   ilp32
    n307      rv32imafc  ilp32f
    n307fd    rv32imafdc ilp32d
+   n600      rv32imac   ilp32
+   n600f     rv32imafc  ilp32f
+   n600fd    rv32imafdc ilp32d
    nx600     rv64imac   lp64
+   nx600f    rv64imafc  lp64f
+   nx600fd   rv64imafdc lp64d
+   ux600     rv64imac   lp64
+   ux600f    rv64imafc  lp64f
+   ux600fd   rv64imafdc lp64d
    ========  ========== =======
 
 .. _develop_buildsystem_var_simulation:
@@ -495,6 +507,30 @@ simulation environment.
 .. note::
 
    * Currently the benchmark applications in **application/baremetal/benchmark** used this optimization
+
+.. _develop_buildsystem_var_gdb_port:
+
+GDB_PORT
+~~~~~~~~
+
+.. note::
+
+    * This new variable **GDB_PORT** is added in Nuclei SDK since version ``0.2.4``
+
+This variable is not used usually, by default the **GDB_PORT** variable is ``3333``.
+
+If you want to change a debug gdb port for openocd and gdb when run ``run_openocd`` and
+``run_gdb`` target, you can pass a new port such as ``3344`` to this variable.
+
+For example, if you want to debug application using run_openocd and
+run_gdb and specify a different port other than ``3333``.
+
+You can do it like this, take ``hbird_eval`` board for example, such as port ``3344``:
+
+* Open openocd server: ``make SOC=hbird BOARD=hbird_eval CORE=n307 GDB_PORT=3344 run_openocd``
+
+* connect gdb with openocd server: ``make SOC=hbird BOARD=hbird_eval CORE=n307 GDB_PORT=3344 run_gdb``
+
 
 .. _develop_buildsystem_var_v:
 
@@ -540,6 +576,19 @@ This is a necessary variable which must be defined in application Makefile.
 
 It is used to set the name of the application, it will affect the generated
 target filenames.
+
+.. warning::
+
+    * Please don't put any spaces in TARGET variable
+    * The variable shouldn't contain any space
+
+    .. code-block:: Makefile
+
+        # invalid case 1
+        TARGET ?= hello world
+        # invalid case 2
+        TARGET ?= helloworld # before this # there is a extra space
+
 
 .. _develop_buildsystem_var_nuclei_sdk_root:
 
@@ -874,12 +923,12 @@ LIBDIRS
 This **LIBDIRS** variable is used to store the library directories, which could
 be used together with **LDLIBS**.
 
-For example, if you have a library located in **$(NUCLEI_SDK_ROOT)/Library/DSP/libdsp.a**,
+For example, if you have a library located in **$(NUCLEI_SDK_ROOT)/Library/DSP/libnmsis_dsp_rv32imac.a**,
 and you want to link it, then you can define these lines:
 
 .. code-block:: makefile
 
-   LDLIBS = -ldsp
+   LDLIBS = -lnmsis_dsp_rv32imac
    LIBDIRS = $(NUCLEI_SDK_ROOT)/Library/DSP
 
 .. _develop_buildsystem_var_linker_script:

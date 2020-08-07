@@ -25,3 +25,8 @@ For NMSIS documentation, please visit following website:  [NMSIS](https://doc.nu
 
 For Board Labs documentation, please visit following website:  [Board Labs](https://doc.nucleisys.com/nuclei_board_labs/)
 
+# Version
+
+1.0.0 
+
+​		First release version. Based on Nuclei SDK V0.2.5

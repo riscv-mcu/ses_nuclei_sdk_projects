@@ -215,7 +215,7 @@ _start:
     csrw CSR_MTVEC, t0
 
     /* Set the interrupt processing mode to ECLIC mode */
-    la t0, 0x3f
+    li t0, 0x3f
     csrc CSR_MTVEC, t0
     csrs CSR_MTVEC, 0x3
 
@@ -233,7 +233,7 @@ _start:
 
     /* ===== Startup Stage 3 ===== */
     /*
-     * Load code section frm FLASH to ILM
+     * Load code section from FLASH to ILM
      * when code LMA is different with VMA
      */
     la a0, _ilm_lma
@@ -285,6 +285,8 @@ _start:
     /* Call C/C++ constructor start up code */
     call __libc_init_array
 
+    /* do pre-init steps before main */
+    call _premain_init
     /* ===== Call Main Function  ===== */
     /* argc = argv = 0 */
     li a0, 0
@@ -296,6 +298,8 @@ _start:
 #else
     call main
 #endif
+    /* do post-main steps after main */
+    call _postmain_fini
 
 1:
     j 1b

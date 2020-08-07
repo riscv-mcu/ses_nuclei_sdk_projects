@@ -21,7 +21,7 @@ else
 	HOST_OS:=Windows
 endif
 else
-	HOST_OS:=$(shell uname -o)
+	HOST_OS:=$(shell uname)
 endif
 
 ##
@@ -35,6 +35,8 @@ RMD=rm -rf
 ECHO=echo
 CP=cp -rf
 MKD = mkdir -p
+PS=/$(nullstring)
+NULL=/dev/null
 
 ## Check OS ##
 ## Check OS == Windows ##
@@ -48,14 +50,14 @@ ifeq "$(HOST_OS)" "Windows"
 	SHELL:=$(WINCMD)
 endif
 
-## Check OS == Cygwin ##
-ifeq "$(HOST_OS)" "Cygwin"
+## Check OS == Linux ##
+ifeq "$(HOST_OS)" "Linux"
 	PS=/$(nullstring)
 	NULL=/dev/null
 endif
 
-## Check OS == GNU/Linux ##
-ifeq "$(HOST_OS)" "GNU/Linux"
+## Check OS == Darwin ##
+ifeq "$(HOST_OS)" "Darwin"
 	PS=/$(nullstring)
 	NULL=/dev/null
 endif

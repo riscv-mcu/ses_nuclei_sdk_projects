@@ -13,8 +13,8 @@
       target_device_name="GD32VF103VBT6" />
     <configuration
       Name="FLASHXIP"
-      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -Wl,--gc-sections -nostartfiles -Wl,--start-group -lm -lc -lgcc -lnosys -T &quot;$(RelLinkerScriptPath)&quot; $(Objects) -o &quot;$(RelTargetPath)&quot; -Xlinker -Map=&quot;$(RelMapPath)&quot; -g -march=rv32i -mabi=ilp32"
       link_dependent_projects="No"
+      linker_section_placements_segments="FLASH RX 0x08000000 0x00020000;RAM RWX 0x20000000 0x00008000"
       project_type="Externally Built Executable" />
     <folder Name="nuclei_sdk">
       <folder Name="SoC">
@@ -172,13 +172,13 @@
   <configuration
     Name="FLASHXIP"
     build_toolchain_directory="$(StudioDir)/Nuclei_Toolchain/gcc/bin"
-    c_preprocessor_definitions="DOWNLOAD_MODE=DOWNLOAD_MODE_FLASHXIP"
-    c_user_include_directories="$(SolutionDir)/../nuclei-sdk/NMSIS/Core/Include;$(SolutionDir)/../nuclei-sdk/SoC/gd32vf103/Board/gd32vf103v_rvstar/Include;$(SolutionDir)/../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb;$(SolutionDir)/../nuclei-sdk/SoC/gd32vf103/Common/Include;$(SolutionDir)/../uclei-sdk/SoC/gd32vf103/Common/Source/Stubs"
+    c_preprocessor_definitions=""
+    c_user_include_directories="$(SolutionDir)/../nuclei-sdk/NMSIS/Core/Include;$(SolutionDir)/../nuclei-sdk/SoC/gd32vf103/Board/gd32vf103v_rvstar/Include;$(SolutionDir)/../nuclei-sdk/SoC/gd32vf103/Common/Include/Usb;$(SolutionDir)/../nuclei-sdk/SoC/gd32vf103/Common/Include;$(SolutionDir)/../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs"
     debug_target_connection="GDB Server"
-    external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32i -mabi=ilp32 -c $(AsmOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -o &quot;$(RelTargetPath)&quot;"
-    external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32i -mabi=ilp32 -c -ffunction-sections -fdata-sections $(COptions) $(COnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
-    external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; -g -march=rv32i -mabi=ilp32 -c -ffunction-sections -fdata-sections $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
-    external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -Wl,--gc-sections -nostartfiles -Wl,--start-group -lm -lc -lgcc -lnosys -T &quot;$(RelLinkerScriptPath)&quot; $(Objects) -o &quot;$(RelTargetPath)&quot; -Xlinker -Map=&quot;$(RelMapPath)&quot; -g -march=rv32i -mabi=ilp32"
+    external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; $(CORE_FLAGS) $(COMMON_FLAGS) $(GC_CFLAGS) $(AsmOptions) $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+    external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; $(CORE_FLAGS) $(COMMON_FLAGS) $(GC_CFLAGS) $(COptions) $(COnlyOptions) $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+    external_cpp_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-g++&quot; $(CORE_FLAGS) $(COMMON_FLAGS) $(GC_CFLAGS) $(COptions) $(CppOnlyOptions) $(Defines) $(Includes) -MD -MF &quot;$(RelDependencyPath)&quot; -c -o  &quot;$(RelTargetPath)&quot;  &quot;$(RelInputPath)&quot; "
+    external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; $(CORE_FLAGS) $(COMMON_FLAGS) $(GC_LDFLAGS) $(NEWLIB_LDFLAGS) $(EXTRA_LDFLAGS)  --specs=nosys.specs -MMD -MT $(ProjectName)$(EXE) -MF $(ProjectName)$(EXE).d $(Objects) -o  &quot;$(OutDir)/$(ProjectName)$(EXE)&quot; -T &quot;$(RelLinkerScriptPath)&quot; -lstdc++ -nostartfiles -Wl,-M,-Map=&quot;$(RelMapPath)&quot; $(LinkOptions) "
     gcc_debugging_level="None"
     gcc_omit_frame_pointer="Yes"
     gcc_optimization_level="Level 1"
@@ -192,6 +192,8 @@
     gdb_server_type="OpenOCD"
     link_linker_script_file="$(ProjectDir)/../nuclei-sdk/SoC/gd32vf103/Board/gd32vf103v_rvstar/Source/GCC/gcc_gd32vf103_flashxip.ld"
     link_use_linker_script_file="Yes"
+    linker_section_placements_segments="FLASH RX 0x08000000 0x00020000;RAM RWX 0x20000000 0x00008000"
+    macros="CORE_FLAGS=-march=rv32imac -mabi=ilp32 -mcmodel=medany;COMMON_FLAGS=-g -fno-common -DDOWNLOAD_MODE=DOWNLOAD_MODE_ILM;GC_CFLAGS=-ffunction-sections -fdata-sections;GC_LDFLAGS=-Wl,--gc-sections -Wl,--check-sections;NEWLIB_LDFLAGS=--specs=nano.specs;EXTRA_LDFLAGS=-u _isatty -u _write -u _sbrk -u _read -u _close -u _fstat -u _lseek"
     target_device_name="GD32VF103VBT6" />
   <project Name="exti_key_interrupt">
     <configuration
@@ -358,10 +360,8 @@
     </folder>
     <configuration
       Name="FLASHXIP"
-      external_assemble_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32i -mabi=ilp32 -c $(AsmOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -o &quot;$(RelTargetPath)&quot;"
-      external_c_compile_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot; -g -march=rv32i -mabi=ilp32 -c -ffunction-sections -fdata-sections $(COptions) $(COnlyOptions) $(Defines) $(Includes) &quot;$(RelInputPath)&quot; -MD -MF &quot;$(RelDependencyPath)&quot; -fno-diagnostics-show-caret -o &quot;$(RelTargetPath)&quot;"
-      external_link_command="&quot;$(ToolChainDir)/riscv-nuclei-elf-gcc&quot;  -Wl,--gc-sections -nostartfiles -Wl,--start-group -lm -lc -lgcc -lnosys -T &quot;$(RelLinkerScriptPath)&quot; $(Objects) -o &quot;$(RelTargetPath)&quot; -Xlinker -Map=&quot;$(RelMapPath)&quot; -g -march=rv32i -mabi=ilp32"
       gdb_server_command_line="&quot;$(StudioDir)/Nuclei_Toolchain/openocd/bin/openocd&quot; -f &quot;$(SolutionDir)/../nuclei-sdk/SoC/gd32vf103/Board/gd32vf103v_rvstar/openocd_gd32vf103.cfg&quot;"
+      linker_section_placements_segments="FLASH RX 0x08000000 0x00020000;RAM RWX 0x20000000 0x00008000"
       project_type="Externally Built Executable" />
   </project>
   <project Name="timer_pwm">
@@ -529,6 +529,7 @@
     </folder>
     <configuration
       Name="FLASHXIP"
+      linker_section_placements_segments="FLASH RX 0x08000000 0x00020000;RAM RWX 0x20000000 0x00008000"
       project_type="Externally Built Executable" />
   </project>
   <project Name="nesting_of_interrupts">
@@ -696,6 +697,7 @@
     </folder>
     <configuration
       Name="FLASHXIP"
+      linker_section_placements_segments="FLASH RX 0x08000000 0x00020000;RAM RWX 0x20000000 0x00008000"
       project_type="Externally Built Executable" />
   </project>
   <project Name="vectored_interrupt">
@@ -711,6 +713,7 @@
       target_device_name="GD32VF103VBT6" />
     <configuration
       Name="FLASHXIP"
+      linker_section_placements_segments="FLASH RX 0x08000000 0x00020000;RAM RWX 0x20000000 0x00008000"
       project_type="Externally Built Executable" />
     <folder Name="nuclei_sdk">
       <folder Name="SoC">

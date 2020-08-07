@@ -1,5 +1,4 @@
-#include "gd32vf103.h"
-#include "gd32vf103_libopt.h"
+#include "nuclei_sdk_soc.h"
 
 static uint32_t get_timer_freq()
 {
@@ -8,23 +7,22 @@ static uint32_t get_timer_freq()
 
 uint32_t measure_cpu_freq(uint32_t n)
 {
+    uint32_t start_mcycle, delta_mcycle;
     uint32_t start_mtime, delta_mtime;
     uint32_t mtime_freq = get_timer_freq();
-  
+
     // Don't start measuruing until we see an mtime tick
     uint32_t tmp = (uint32_t)SysTimer_GetLoadValue();
     do {
         start_mtime = (uint32_t)SysTimer_GetLoadValue();
+        start_mcycle = __RV_CSR_READ(CSR_MCYCLE);
     } while (start_mtime == tmp);
-  
-    uint32_t start_mcycle = __RV_CSR_READ(CSR_MCYCLE);
-  
+
     do {
         delta_mtime = (uint32_t)SysTimer_GetLoadValue() - start_mtime;
+        delta_mcycle = __RV_CSR_READ(CSR_MCYCLE) - start_mcycle;
     } while (delta_mtime < n);
-  
-    uint32_t delta_mcycle = __RV_CSR_READ(CSR_MCYCLE) - start_mcycle;
-  
+
     return (delta_mcycle / delta_mtime) * mtime_freq
            + ((delta_mcycle % delta_mtime) * mtime_freq) / delta_mtime;
 }
@@ -51,17 +49,11 @@ uint32_t get_cpu_freq()
 void delay_1ms(uint32_t count)
 {
     uint64_t start_mtime, delta_mtime;
+    uint64_t delay_ticks = (SOC_TIMER_FREQ * (uint64_t)count) / 1000;
 
-    /* don't start measuruing until we see an mtime tick */
-    uint64_t tmp = SysTimer_GetLoadValue();
-
-    do {
-        start_mtime = SysTimer_GetLoadValue();
-    } while(start_mtime == tmp);
+    start_mtime = SysTimer_GetLoadValue();
 
     do {
         delta_mtime = SysTimer_GetLoadValue() - start_mtime;
-    } while (delta_mtime < (SystemCoreClock/4000.0 * count));
+    } while (delta_mtime < delay_ticks);
 }
-
-

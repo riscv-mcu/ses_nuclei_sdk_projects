@@ -21,6 +21,8 @@ The provided applications can be divided into three categories:
 
 * UCOSII applications: Located in ``application/ucosii``
 
+* RTThread applications: Located in ``application/rtthread``
+
 If you want to develop your own application in Nuclei SDK, please click
 :ref:`develop_appdev` to learn more about it.
 
@@ -56,21 +58,26 @@ will check this RISC-V CSR **MISA** register value.
     CPU Frequency 109323529 Hz
     MISA: 0x40901105
     MISA: RV32IMACUX
-    Hello World!
-    Hello World!
-    Hello World!
-    Hello World!
-    Hello World!
-    Hello World!
-    Hello World!
-    Hello World!
-    Hello World!
-    Hello World!
-    Hello World!
-    Hello World!
-    Hello World!
-    Hello World!
-    Hello World!
+    0: Hello World From Nuclei RISC-V Processor!
+    1: Hello World From Nuclei RISC-V Processor!
+    2: Hello World From Nuclei RISC-V Processor!
+    3: Hello World From Nuclei RISC-V Processor!
+    4: Hello World From Nuclei RISC-V Processor!
+    5: Hello World From Nuclei RISC-V Processor!
+    6: Hello World From Nuclei RISC-V Processor!
+    7: Hello World From Nuclei RISC-V Processor!
+    8: Hello World From Nuclei RISC-V Processor!
+    9: Hello World From Nuclei RISC-V Processor!
+    10: Hello World From Nuclei RISC-V Processor!
+    11: Hello World From Nuclei RISC-V Processor!
+    12: Hello World From Nuclei RISC-V Processor!
+    13: Hello World From Nuclei RISC-V Processor!
+    14: Hello World From Nuclei RISC-V Processor!
+    15: Hello World From Nuclei RISC-V Processor!
+    16: Hello World From Nuclei RISC-V Processor!
+    17: Hello World From Nuclei RISC-V Processor!
+    18: Hello World From Nuclei RISC-V Processor!
+    19: Hello World From Nuclei RISC-V Processor!
 
 
 demo_timer
@@ -82,7 +89,6 @@ the CORE TIMER API including the Timer Interrupt and Timer Software Interrupt.
 * Both interrupts are registered as non-vector interrupt.
 * First the timer interrupt will run for 10 times
 * Then the software timer interrupt will start to run for 10 times
-
 
 **How to run this application:**
 
@@ -299,17 +305,22 @@ demo_dsp
 This `demo_dsp application`_ is used to demostrate how to NMSIS-DSP API.
 
 * Mainly show how we can use DSP library and header files.
-* It mainly demo the ``riscv_mean`` functions and its reference functions
+* It mainly demo the ``riscv_conv_xx`` functions and its reference functions
 * If your Nuclei Processor Core has DSP feature enabled, you can pass extra
   ``DSP_ENABLE=ON`` in your make command to use NMSIS-DSP library with DSP enabled.
-* By default, the application will use NMSIS-DSP library with DSP disabled.
+* By default, the application will use NMSIS-DSP library with DSP enabled.
 
 .. note::
 
+    * From version 0.2.4, this demo is upgraded to a more complex version which
+      shows the usage of ``riscv_conv_xx`` functions, and ``DSP_ENABLE`` is changed
+      from ``OFF`` to ``ON`` by default.
     * The GD32VF103 SoC didn't has DSP enabled, so this SoC can only use NMSIS-DSP
-      library with DSP disabled.
+      library with DSP disabled, so please pass extra ``DSP_ENABLE=OFF`` when run make.
     * For other Nuclei Processor Core based SoC, please check whether it has DSP
       feature enabled to decide which kind of **NMSIS-DSP** library to use.
+    * Even our NMSIS-DSP library with DSP disabled are also optimized, so it can
+      also provide good performance in some functions.
 
 **How to run this application:**
 
@@ -319,31 +330,42 @@ This `demo_dsp application`_ is used to demostrate how to NMSIS-DSP API.
     # cd to the demo_dsp directory
     cd application/baremetal/demo_dsp
     # Clean the application first
-    make SOC=gd32vf103 BOARD=gd32vf103v_rvstar clean
+    make SOC=gd32vf103 BOARD=gd32vf103v_rvstar DSP_ENABLE=OFF clean
     # Build and upload the application
-    make SOC=gd32vf103 BOARD=gd32vf103v_rvstar upload
+    make SOC=gd32vf103 BOARD=gd32vf103v_rvstar DSP_ENABLE=OFF upload
 
 **Expected output as below:**
 
 .. code-block:: console
 
-   Nuclei SDK Build Time: Feb 26 2020, 15:20:43
-   Download Mode: FLASHXIP
-   CPU Frequency 108000000 Hz
-   CSV, BENCH START, 974939
-   CSV, riscv_mean_f32, 13057
-   CSV, ref_mean_f32, 12612
-   riscv vs ref: ,
-   CSV, riscv_mean_q7, 765
-   CSV, ref_mean_q7, 763
-   riscv vs ref: 3, 3
-   CSV, riscv_mean_q15, 904
-   CSV, ref_mean_q15, 905
-   riscv vs ref: -1, -1
-   CSV, riscv_mean_q31, 1933
-   CSV, ref_mean_q31, 1789
-   riscv vs ref: -611, -611
-   CSV, BENCH END, 2977160
+    Nuclei SDK Build Time: Jun 18 2020, 17:43:31
+    Download Mode: FLASHXIP
+    CPU Frequency 108270000 Hz
+    CSV, riscv_conv_q31, 1225418
+    CSV, ref_conv_q31, 2666240
+    SUCCESS, riscv_conv_q31
+    CSV, riscv_conv_q15, 289940
+    CSV, ref_conv_q15, 311158
+    SUCCESS, riscv_conv_q15
+    CSV, riscv_conv_q7, 463
+    CSV, ref_conv_q7, 846
+    SUCCESS, riscv_conv_q7
+    CSV, riscv_conv_fast_q15, 106293
+    CSV, ref_conv_fast_q15, 247938
+    SUCCESS, riscv_conv_fast_q15
+    CSV, riscv_conv_fast_q31, 490539
+    CSV, ref_conv_fast_q31, 2215917
+    SUCCESS, riscv_conv_fast_q31
+    CSV, riscv_conv_opt_q15, 217250
+    CSV, ref_conv_opt_q15, 311162
+    SUCCESS, riscv_conv_opt_q15
+    CSV, riscv_conv_opt_q7, 714
+    CSV, ref_conv_opt_q7, 842
+    SUCCESS, riscv_conv_opt_q7
+    CSV, riscv_conv_fast_opt_q15, 137252
+    CSV, ref_conv_fast_opt_q15, 249958
+    SUCCESS, riscv_conv_fast_opt_q15
+    all test are passed. Well done!
 
 
 coremark
@@ -628,20 +650,32 @@ In Nuclei SDK, we provided code and Makefile for this ``freertos demo`` applicat
     Download Mode: FLASHXIP
     CPU Frequency 109058823 Hz
     Before StartScheduler
-    task_1
-    task1_running.....
-    task_2
-    task2_running.....
-    timers Callback
-    timers Callback
-    task1_running.....
-    task2_running.....
-    timers Callback
-    timers Callback
-    task1_running.....
-    task2_running.....
-    timers Callback
-    timers Callback
+    Enter to task_1
+    task1 is running 0.....
+    Enter to task_2
+    task2 is running 0.....
+    timers Callback 0
+    timers Callback 1
+    task1 is running 1.....
+    task2 is running 1.....
+    timers Callback 2
+    timers Callback 3
+    task1 is running 2.....
+    task2 is running 2.....
+    timers Callback 4
+    timers Callback 5
+    task1 is running 3.....
+    task2 is running 3.....
+    timers Callback 6
+    timers Callback 7
+    task1 is running 4.....
+    task2 is running 4.....
+    timers Callback 8
+    timers Callback 9
+    task1 is running 5.....
+    task2 is running 5.....
+    timers Callback 10
+    timers Callback 11
 
 
 UCOSII applications
@@ -795,9 +829,9 @@ In Nuclei SDK, we provided code and Makefile for this ``rtthread demo`` applicat
 .. _demo_timer application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/baremetal/demo_timer
 .. _demo_eclic application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/baremetal/demo_eclic
 .. _demo_dsp application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/baremetal/demo_dsp
-.. _coremark benchmark application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/benchmark/coremark
-.. _dhrystone benchmark application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/benchmark/dhrystone
-.. _whetstone benchmark application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/benchmark/whetstone
+.. _coremark benchmark application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/baremetal/benchmark/coremark
+.. _dhrystone benchmark application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/baremetal/benchmark/dhrystone
+.. _whetstone benchmark application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/baremetal/benchmark/whetstone
 .. _freertos demo application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/freertos/demo
 .. _ucosii demo application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/ucosii/demo
 .. _rt-thread demo application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/rtthread/demo

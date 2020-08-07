@@ -148,6 +148,8 @@ The source code of Nuclei SDK is maintained in |github| and |gitee|.
         ``git clone https://gitee.com/Nuclei-Software/nuclei-sdk nuclei-sdk`` to clone from gitee.
       - If you have no internet access, you can also use pre-downloaded ``nuclei-sdk`` code,
         and use it.
+      - If the backup repo is not up to date, you can import github repo in gitee by yourself, see
+        https://gitee.com/projects/import/url
 
 * Create tool environment config file for Nuclei SDK
 
@@ -254,7 +256,7 @@ Hardware Preparation
 Please check :ref:`design_board` and find your board's page, and follow **Setup** section
 to setup your hardware, mainly **JTAG debugger driver setup and on-board connection setup**.
 
-* Power on the **RVStar** board, and use USB Type-C data cable to connect the board and your PC,
+* Power on the :ref:`design_board_gd32vf103v_rvstar` board, and use USB Type-C data cable to connect the board and your PC,
   make sure you have setup the JTAG driver correctly, and you can see JTAG port and serial port.
 * Open a UART terminal tool such as |teraterm| or |minicom|, and minitor the serial port of the Board,
   the UART baudrate is *115200 bps*
@@ -571,6 +573,7 @@ There are several ways to achieve it, see as below:
 
 .. note::
 
+    * If your are looking for how to run for other boards, please ref to :ref:`design_board`.
     * Please refer to :ref:`develop_appdev` and :ref:`develop_buildsystem` for more information.
     * If you want to access SoC related APIs, please use ``nuclei_sdk_soc.h`` header file.
     * If you want to access SoC and board related APIs, please use ``nuclei_sdk_hal.h`` header file.
@@ -590,16 +593,26 @@ For more advanced usage, please follow the items as below:
     * If you met some issues in using this guide, please check :ref:`faq`,
       if still not solved, please :ref:`contribute_submit_issue`.
 
-    * If you are trying to **develop Nuclei SDK application in IDE**, now you have two choices:
+    * If you are trying to **develop Nuclei SDK application in IDE**, now you have three choices:
 
-      1. You can take a try using Segger embedded studio, we provided prebuilt projects using Nuclei
+      1. Since Nuclei Studio 2020.08, Nuclei SDK will be deeply integrated with Nuclei Studio, you can
+         easily create a Nuclei SDK Project in Nuclei Studio through IDE Project Wizard, and easily
+         configure Nuclei SDK project when the Nuclei SDK project is created using SDK Configuration
+         Tool, for more details, please click `Nuclei Tools`_ to download Nuclei Studio, and refer to
+         the ``Nuclei Studio User Guide.pdf`` in it.
+
+      2. You can take a try using Segger embedded studio, we provided prebuilt projects using Nuclei
          SDK release version, click `Segger embedded studio projects for Nuclei SDK`_ to learn about it
 
-      2. You can also take a try with the Cross-platform PlatformIO IDE, we provided our Nuclei platform
-         and Nuclei SDK release version in PlatformIO, clean `Platform Nuclei in PlatformIO`_ to learn
+      3. You can also take a try with the Cross-platform PlatformIO IDE, we provided our Nuclei platform
+         and Nuclei SDK release version in PlatformIO, click `Platform Nuclei in PlatformIO`_ to learn
          more about it
+
+      4. You can also use source code in Nuclei SDK as base, and easily integrate with other IDE tools,
+         such as IAR workbench for RISC-V, Compiler-IDE and others.
 
 
 .. _GDB User Manual: https://www.gnu.org/software/gdb/documentation/
+.. _Nuclei Tools: https://nucleisys.com/download.php
 .. _Segger embedded studio projects for Nuclei SDK: https://github.com/riscv-mcu/ses_nuclei_sdk_projects
 .. _Platform Nuclei in PlatformIO: https://platformio.org/platforms/nuclei
