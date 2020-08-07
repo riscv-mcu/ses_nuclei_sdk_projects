@@ -1,7 +1,12 @@
-# SEGGER Embedded Studio For Nuclei Processor Core
-[Nuclei System Technology](https://www.nucleisys.com/)  is the first professional RISC-V processor IP and solution company in mainland China. Our RISC-V processor IPs have been used for mass production in many top fabless companies. And We collaborated with GigaDevice for the first RISC-V based general-purpose MCU in the world — GD32VF103.
+# SEGGER Embedded Studio Prebuilt Projects For Nuclei Processor Core
 
-This project supplies demos for hbird_eval board and RV-star board.
+[Nuclei System Technology](https://www.nucleisys.com/) is the first professional RISC-V processor IP and solution company in mainland China.
+Our RISC-V processor IPs have been used for mass production in many top fabless companies.
+And We collaborated with GigaDevice for the first RISC-V based general-purpose MCU in the world - **GD32VF103**.
+
+This repo supplies prebuilt Nuclei SDK SES projects for hbird_eval board and RV-STAR board.
+
+> **SES** is short for [Segger Embedded Studio for RISC-V](https://www.segger.com/products/development-tools/embedded-studio/editions/risc-v/)
 
 # Nuclei Advantages:
 
@@ -17,16 +22,20 @@ This project supplies demos for hbird_eval board and RV-star board.
 
 # Usage
 
-For SES installation and quick start, please visit following website: [installation ](https://www.nucleisys.com/download.php)    [quick-start](https://www.riscv-mcu.com/quickstart-quickstart-index-u-GD32VF103C_START.html)
+* For SES installation and quick start, please visit following website:
 
-For SDK documentation, please visit following website:  [SDK](https://doc.nucleisys.com/nuclei_sdk/)
+  - [Nuclei_SES_IDE_Installation.pdf](https://www.nucleisys.com/upload/file/2020/02/1581671399-5500.pdf)
 
-For NMSIS documentation, please visit following website:  [NMSIS](https://doc.nucleisys.com/nmsis/)
+  - [SES Quick Start For RVSTAR Board](https://www.riscv-mcu.com/quickstart-quickstart-index-u-pdf-id-236.html)
 
-For Board Labs documentation, please visit following website:  [Board Labs](https://doc.nucleisys.com/nuclei_board_labs/)
+* For SDK documentation, please visit following website:  [Nuclei SDK Documentation](https://doc.nucleisys.com/nuclei_sdk/)
 
-# Version
+* For NMSIS documentation, please visit following website:  [NMSIS Documentation](https://doc.nucleisys.com/nmsis/)
 
-1.0.0 
+* For Board Labs documentation, please visit following website:  [Board Labs User Guide](https://doc.nucleisys.com/nuclei_board_labs/)
 
-​		First release version. Based on Nuclei SDK V0.2.5
+# Release History
+
+## 1.0.0
+
+* First release version. Based on Nuclei SDK V0.2.5
