@@ -34,8 +34,4 @@ This repo supplies prebuilt Nuclei SDK SES projects for hbird_eval board and RV-
 
 * For Board Labs documentation, please visit following website:  [Board Labs User Guide](https://doc.nucleisys.com/nuclei_board_labs/)
 
-# Release History
-
-## 1.0.0
-
-* First release version. Based on Nuclei SDK V0.2.5
+# [Release History](https://github.com/riscv-mcu/ses_nuclei_sdk_projects/releases)
