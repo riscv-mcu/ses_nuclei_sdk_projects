@@ -3,10 +3,10 @@
 FAQ
 ===
 
-Why I can't download application in Windows?
---------------------------------------------
+Why I can't download application?
+---------------------------------
 
-If you met the following issue as below message showed:
+* **Case 1: Remote communication error.  Target disconnected.: Success.**
 
 .. code-block:: console
 
@@ -21,22 +21,82 @@ If you met the following issue as below message showed:
     You can't do that when your target is ``exec'
     "monitor" command not supported by this target.
     "monitor" command not supported by this target.
-    "Successfully uploaded hello_world.elf "
 
+Please check whether your driver is installed successfully via replace target `upload` to `run_openocd`
+as the board user manual described, especially, for **RV-STAR** and **HummingBird Evaluation** boards,
+For windows, you need to download the **HummingBird Debugger Windows Driver** from
+https://nucleisys.com/developboard.php, and install it.
 
-Please check whether your driver is installed successfully as the board user manual described,
-especially, for **RV-STAR** and **HummingBird Evaluation** boards, you need to download the
-**HummingBird Debugger Windows Driver** from https://nucleisys.com/developboard.php, and install it.
+If still not working, please check whether your JTAG connection is good.
 
 .. note::
 
     The USB driver might lost when you re-plug the USB port, you might need to reinstall the driver.
 
+* **Case 2: bfd requires flen 4, but target has flen 0**
+
+.. code-block:: console
+
+    bfd requires flen 4, but target has flen 0
+    "monitor" command not supported by this target.
+    "monitor" command not supported by this target.
+    "monitor" command not supported by this target.
+    You can't do that when your target is `exec'
+    "monitor" command not supported by this target.
+    "monitor" command not supported by this target.
+
+*bfd* is addbreviation for **Binary File Descriptor**.
+
+This is caused by the target core flen is 0, which means it didn't have float point
+unit in it, but your program is compiled using flen = 4, single point float unit used,
+which is incompatiable, similar cases such as ``bfd requires flen 8, but target has flen 4``
+
+Just change your CORE to proper core settings will solve this issue.
+
+For example, if you compile your core with ``CORE=n307``,
+just change it to ``CORE=n305``.
+
+* **Case 3: bfd requires xlen 8, but target has xlen 4**
+
+.. code-block:: console
+
+    bfd requires xlen 8, but target has xlen 4
+    "monitor" command not supported by this target.
+    "monitor" command not supported by this target.
+    "monitor" command not supported by this target.
+    You can't do that when your target is ``exec'
+    "monitor" command not supported by this target.
+    "monitor" command not supported by this target.
+
+This issue is caused by the program is a riscv 64 program,
+but the core is a riscv 32 core, so just change your program
+to be compiled using a riscv 32 compile option.
+
+For example, if you compile your core with ``CORE=ux600``,
+just change it to ``CORE=n305``.
+
+
+How to select correct FDTI debugger?
+------------------------------------
+
+From Nuclei SDK release 0.2.9, the openocd configuration file doesn't
+contain `ftdi_device_desc`_ line by default, so if there are more than
+one FTDI debuggers which has the same VID/PID(0x0403/0x6010) as Nuclei
+Debugger Kit use, then you might need to add extra ``ftdi_device_desc``
+line in the openocd configuration file to describe the FTDI device description.
+
+* For **HummingBird Evaluation Board**, you can check the openocd configuration
+  file in *SoC/hbird/Board/hbird_eval/openocd_hbird.cfg*.
+
+* For **Nuclei RVSTAR Board**, you can check the openocd configuration file
+  in *SoC/gd32vf103/Board/gd32vf103v_rvstar/openocd_gd32vf103.cfg*.
+
 
 Why I can't download application in Linux?
 ------------------------------------------
 
-Please check that whether you have followed the board user manual to setup the USB JTAG drivers correctly.
+Please check that whether you have followed the `debugger kit manual`_
+to setup the USB JTAG drivers correctly.
 The windows steps and linux steps are different, please take care.
 
 
@@ -80,3 +140,43 @@ For example, if you want to clone **nuclei-sdk** using command
 ``git clone https://github.com/Nuclei-Software/nuclei-sdk``, then
 you can achieve it by command ``git clone https://gitee.com/Nuclei-Software/nuclei-sdk``
 
+\`.text' will not fit in region \`ilm' or \`.bss' will not fit in region \`ram'
+-------------------------------------------------------------------------------
+
+If you met similar message as below when build an application:
+
+.. code-block:: console
+
+    xxx/bin/ld: cifar10.elf section `.text' will not fit in region `ilm'
+    xxx/bin/ld: cifar10.elf section `.bss' will not fit in region `ram'
+    xxx/bin/ld: section .stack VMA [000000009000f800,000000009000ffff] overlaps section .bss VMA [00000000900097c0,00000000900144eb]
+    xxx/bin/ld: region `ilm' overflowed by 43832 bytes
+    xxx/bin/ld: region `ram' overflowed by 0 bytes
+
+It is caused by the program is too big, our default link script is 64K ILM, 64K DLM, 4M SPIFlash for Nuclei HummingBird SoC.
+
+If your core has bigger ILM or DLM, you can change related linker script file according to your choice.
+
+For example, if you want to change linker script for hbird_eval ilm download mode:
+``ILM to 512K, DLM to 256K``, then you can change link script file
+``SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_ilm.ld`` as below:
+
+.. code-block:: diff
+
+    diff --git a/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_ilm.ld b/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_ilm.ld
+    index 1ac5b90..08451b3 100644
+    --- a/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_ilm.ld
+    +++ b/SoC/hbird/Board/hbird_eval/Source/GCC/gcc_hbird_ilm.ld
+    @@ -28,8 +28,8 @@ ENTRY( _start )
+     MEMORY
+     {
+
+    -  ilm (rxai!w) : ORIGIN = 0x80000000, LENGTH = 64K
+    -  ram (wxa!ri) : ORIGIN = 0x90000000, LENGTH = 64K
+    +  ilm (rxai!w) : ORIGIN = 0x80000000, LENGTH = 512K
+    +  ram (wxa!ri) : ORIGIN = 0x90000000, LENGTH = 256K
+     }
+
+
+.. _debugger kit manual: https://www.nucleisys.com/theme/package/Nuclei_FPGA_DebugKit_Intro.pdf
+.. _ftdi_device_desc: http://openocd.org/doc/html/Debug-Adapter-Configuration.html

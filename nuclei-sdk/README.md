@@ -1,5 +1,9 @@
 # Nuclei Software Development Kit
 
+[![Build Documentation](https://github.com/Nuclei-Software/nuclei-sdk/workflows/Build%20Documentation/badge.svg)](https://github.com/Nuclei-Software/nuclei-sdk/actions?query=workflow%3A%22Build+Documentation%22)
+[![Build SDK](https://github.com/Nuclei-Software/nuclei-sdk/workflows/Build%20SDK/badge.svg)](https://github.com/Nuclei-Software/nuclei-sdk/actions?query=workflow%3A%22Build+SDK%22)
+
+
 **Nuclei Software Development Kit(Nuclei SDK)** is developed for developing and evaluating software using our FPGA evaluation board.
 
 ![Nuclei SDK Diagram](doc/source/asserts/images/nuclei_sdk_diagram.png)
@@ -113,7 +117,7 @@ $NUCLEI_SDK_ROOT
 
 * **OS**
 
-  This directory provided two RTOS package we suppported which are **FreeRTOS** and **UCOSII**.
+  This directory provided three RTOS package we suppported which are **FreeRTOS**, **UCOSII** and **RT-Thread**.
 
 * **LICENSE**
 

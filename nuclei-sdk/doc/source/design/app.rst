@@ -367,6 +367,75 @@ This `demo_dsp application`_ is used to demostrate how to NMSIS-DSP API.
     SUCCESS, riscv_conv_fast_opt_q15
     all test are passed. Well done!
 
+demo_nice
+~~~~~~~~~
+
+This `demo_nice application`_ is used to demostrate how to Nuclei NICE feature.
+
+**NICE** is short for Nuclei Instruction Co-unit Extension, which is used to
+support extensive customization and specialization.
+
+**NICE** allows customers to create user-defined instructions, enabling the
+integrations of custom hardware co-units that improve domain-specific
+performance while reducing power consumption.
+
+For more about **NICE** feature, please click `Nuclei User Extended Introduction`_.
+
+* Mainly show how to use NICE intrinsic function with compiler.
+* It only works with Nuclei RISC-V Processor with the hardware NICE demo intergated.
+
+.. note::
+
+    * If didn't work with gd32vf103 processor.
+
+**How to run this application:**
+
+.. code-block:: shell
+
+    # Assume that you can set up the Tools and Nuclei SDK environment
+    # Use Nuclei UX607 RISC-V processor as example, hardware NICE demo intergated
+    # cd to the demo_dsp directory
+    cd application/baremetal/demo_nice
+    # Clean the application first
+    make SOC=hbird BOARD=hbird_eval CORE=ux600 clean
+    # Build and upload the application
+    make SOC=hbird BOARD=hbird_eval CORE=ux600 upload
+
+**Expected output as below:**
+
+.. code-block:: console
+
+    Nuclei SDK Build Time: Nov 26 2020, 11:14:51
+    Download Mode: ILM
+    CPU Frequency 15999631 Hz
+
+    Nuclei Nice Acceleration Demonstration
+    1. Print input matrix array
+    the element of array is :
+            10      30      90
+            20      40      80
+            30      90      120
+
+    2. Do reference matrix column sum and row sum
+    2. Do nice matrix column sum and row sum
+    3. Compare reference and nice result
+      1) Reference result:
+    the sum of each row is :
+                    130     140     240
+    the sum of each col is :
+                    60      160     290
+      2) Nice result:
+    the sum of each row is :
+                    130     140     240
+    the sum of each col is :
+                    60      160     290
+      3) Compare reference vs nice: PASS
+    4. Performance summary
+             normal:
+                  instret: 511, cycle: 790
+             nice  :
+                  instret: 125, cycle: 227
+
 
 coremark
 ~~~~~~~~
@@ -824,14 +893,65 @@ In Nuclei SDK, we provided code and Makefile for this ``rtthread demo`` applicat
     thread 0 count: 4
     thread 1 count: 4
 
+msh
+~~~
+
+This `rt-thread msh application`_ demonstrates msh shell in serial console which is a component of rt-thread.
+
+* ``MSH_CMD_EXPORT(nsdk, msh nuclei sdk demo)`` exports a command ``nsdk`` to msh shell
+
+In Nuclei SDK, we provided code and Makefile for this ``rtthread msh`` application.
+
+* **RTOS = RTThread** is added in its Makefile to include RT-Thread service
+* **RTTHREAD_MSH := 1** is added in its Makefile to include RT-Thread msh component
+* The **RT_TICK_PER_SECOND** in ``rtconfig.h`` is by default set to `200`, you can change it
+  to other number according to your requirement.
+* To run this application in :ref:`design_soc_hbird`, the SoC clock frequency must be above 16MHz,
+  if run in 8MHz, uart read is not correct due to bit error in uart rx process.
+
+**How to run this application:**
+
+.. code-block:: shell
+
+    # Assume that you can set up the Tools and Nuclei SDK environment
+    # cd to the rtthread msh directory
+    cd application/rtthread/msh
+    # Clean the application first
+    make SOC=gd32vf103 BOARD=gd32vf103v_rvstar clean
+    # Build and upload the application
+    make SOC=gd32vf103 BOARD=gd32vf103v_rvstar upload
+
+**Expected output as below:**
+
+.. code-block:: console
+
+    Nuclei SDK Build Time: Nov 27 2020, 11:00:29
+    Download Mode: FLASHXIP
+    CPU Frequency 107732673 Hz
+
+    \ | /
+    - RT -     Thread Operating System
+    / | \     3.1.3 build Nov 27 2020
+    2006 - 2019 Copyright by rt-thread team
+    Hello RT-Thread!
+    msh >help
+    RT-Thread shell commands:
+    list_timer list_mailbox list_sem list_thread version ps help nsdk
+    msh >nsdk
+    Hello Nuclei SDK!
+    msh >
+
 
 .. _helloworld application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/baremetal/helloworld
 .. _demo_timer application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/baremetal/demo_timer
 .. _demo_eclic application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/baremetal/demo_eclic
 .. _demo_dsp application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/baremetal/demo_dsp
+.. _demo_nice application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/baremetal/demo_nice
 .. _coremark benchmark application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/baremetal/benchmark/coremark
 .. _dhrystone benchmark application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/baremetal/benchmark/dhrystone
 .. _whetstone benchmark application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/baremetal/benchmark/whetstone
 .. _freertos demo application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/freertos/demo
 .. _ucosii demo application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/ucosii/demo
 .. _rt-thread demo application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/rtthread/demo
+.. _rt-thread msh application: https://github.com/Nuclei-Software/nuclei-sdk/tree/master/application/rtthread/msh
+.. _Nuclei User Extended Introduction: https://doc.nucleisys.com/nuclei_spec/isa/nice.html

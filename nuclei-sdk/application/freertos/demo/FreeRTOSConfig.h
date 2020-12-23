@@ -75,13 +75,13 @@
 /* Here is a good place to include header files that are required across
 your application. */
 
-#define USER_MODE_TASKS							0
+#define USER_MODE_TASKS                         0
 
 #define configUSE_PREEMPTION                    1
 #define configUSE_PORT_OPTIMISED_TASK_SELECTION 0
 #define configUSE_TICKLESS_IDLE                 0
 #define configCPU_CLOCK_HZ                      SystemCoreClock
-#define configRTC_CLOCK_HZ						32768
+#define configRTC_CLOCK_HZ                      32768
 #define configTICK_RATE_HZ                      100
 #define configMAX_PRIORITIES                    4
 #define configMINIMAL_STACK_SIZE                256
@@ -127,7 +127,7 @@ your application. */
 #define configTIMER_QUEUE_LENGTH                5
 #define configTIMER_TASK_STACK_DEPTH            configMINIMAL_STACK_SIZE
 
-#define configKERNEL_INTERRUPT_PRIORITY         1
+#define configKERNEL_INTERRUPT_PRIORITY         0
 #define configMAX_SYSCALL_INTERRUPT_PRIORITY    7
 
 /* Define to trap errors during development. */

@@ -19,7 +19,7 @@
 #define SYSTICK_TICK_CONST                          (SOC_TIMER_FREQ / RT_TICK_PER_SECOND)
 
 #ifndef configKERNEL_INTERRUPT_PRIORITY
-    #define configKERNEL_INTERRUPT_PRIORITY         1
+    #define configKERNEL_INTERRUPT_PRIORITY         0
 #endif
 
 #ifndef configMAX_SYSCALL_INTERRUPT_PRIORITY
@@ -227,6 +227,14 @@ void rt_hw_console_output(const char *str)
 
     size = rt_strlen(str);
     _write(STDOUT_FILENO, str, size);
+}
+
+extern ssize_t _read(int fd, void* ptr, size_t len);
+char rt_hw_console_getchar(void)
+{
+    int ch = -1;
+    _read(STDIN_FILENO, &ch, 1);
+    return ch;
 }
 
 rt_base_t rt_hw_interrupt_disable(void)

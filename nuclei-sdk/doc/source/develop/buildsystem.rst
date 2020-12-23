@@ -383,7 +383,7 @@ Currently we support the following SoCs, see :ref:`table_dev_buildsystem_1`.
 BOARD
 ~~~~~
 
-**Board** variable is used to declare which Board is used in application during compiling.
+**BOARD** variable is used to declare which Board is used in application during compiling.
 
 The **BOARD** variable should match the supported boards of chosen **SOC**.
 You can easily find the supported Boards in the **<NUCLEI_SDK_ROOT>/<SOC>/Board/** directory.
@@ -674,6 +674,20 @@ If you don't want disable this GC feature, you can set **NOGC=1**, GC feature wi
 remove sections for you, but sometimes it might remove sections that are useful,
 e.g. For Nuclei SDK test cases, we use ctest framework, and we need to set **NOGC=1**
 to disable GC feature.
+
+.. _develop_buildsystem_var_rtthread_msh:
+
+RTTHREAD_MSH
+~~~~~~~~~~~~
+
+**RTTHREAD_MSH** variable is valid only when **RTOS** is set to **RTThread**.
+
+When **RTTHREAD_MSH** is set to **1**:
+
+* The RTThread MSH compoment source code will be included
+* The MSH thread will be enabled in the background
+* Currently the msh getchar implementation is using a weak function implemented
+  in ``rt_hw_console_getchar`` in ``OS/RTTThread/libcpu/risc-v/nuclei/cpuport.c``
 
 .. _develop_buildsystem_app_build_vars:
 

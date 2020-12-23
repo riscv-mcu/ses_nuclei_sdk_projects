@@ -137,6 +137,20 @@
                     Name="FLASHXIP"
                     build_exclude_from_build="No" />
                 </file>
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/clock_getres.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/clock_gettime.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/clock_settime.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/execve.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/exit.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/fork.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/getpid.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/kill.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/link.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/open.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/stat.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/times.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/unlink.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/wait.c" />
               </folder>
               <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/gd32vf103_soc.c" />
               <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/system_gd32vf103.c" />
@@ -347,6 +361,20 @@
                     Name="FLASHXIP"
                     build_exclude_from_build="No" />
                 </file>
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/clock_getres.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/clock_gettime.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/clock_settime.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/execve.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/exit.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/fork.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/getpid.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/kill.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/link.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/open.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/stat.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/times.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/unlink.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/wait.c" />
               </folder>
               <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/gd32vf103_soc.c" />
               <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/system_gd32vf103.c" />
@@ -496,6 +524,20 @@
                     Name="FLASHXIP"
                     build_exclude_from_build="No" />
                 </file>
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/clock_getres.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/clock_gettime.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/clock_settime.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/execve.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/exit.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/fork.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/getpid.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/kill.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/link.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/open.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/stat.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/times.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/unlink.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/wait.c" />
               </folder>
               <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/gd32vf103_soc.c" />
               <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/system_gd32vf103.c" />
@@ -664,6 +706,20 @@
                     Name="FLASHXIP"
                     build_exclude_from_build="No" />
                 </file>
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/clock_getres.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/clock_gettime.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/clock_settime.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/execve.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/exit.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/fork.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/getpid.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/kill.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/link.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/open.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/stat.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/times.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/unlink.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/wait.c" />
               </folder>
               <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/gd32vf103_soc.c" />
               <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/system_gd32vf103.c" />
@@ -836,6 +892,20 @@
                     Name="FLASHXIP"
                     build_exclude_from_build="No" />
                 </file>
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/clock_getres.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/clock_gettime.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/clock_settime.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/execve.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/exit.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/fork.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/getpid.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/kill.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/link.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/open.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/stat.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/times.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/unlink.c" />
+                <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/Stubs/wait.c" />
               </folder>
               <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/gd32vf103_soc.c" />
               <file file_name="../nuclei-sdk/SoC/gd32vf103/Common/Source/system_gd32vf103.c" />

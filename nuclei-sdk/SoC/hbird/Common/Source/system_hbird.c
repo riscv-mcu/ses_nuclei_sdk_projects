@@ -61,7 +61,7 @@
  * Thus one must assure that the variable always reflects the actual system clock speed.
  *
  * \attention
- * Be aware that a value stored to \c SystemCoreClock during low level initializaton (i.e. \c SystemInit()) might get
+ * Be aware that a value stored to \c SystemCoreClock during low level initialization (i.e. \c SystemInit()) might get
  * overwritten by C libray startup code and/or .bss section initialization.
  * Thus its highly recommended to call \ref SystemCoreClockUpdate at the beginning of the user \c main() routine.
  *
@@ -165,9 +165,10 @@ typedef void (*EXC_HANDLER) (unsigned long mcause, unsigned long sp);
 static void system_default_exception_handler(unsigned long mcause, unsigned long sp)
 {
     /* TODO: Uncomment this if you have implement printf function */
-    printf("MCAUSE: 0x%lx\r\n", mcause);
-    printf("MEPC  : 0x%lx\r\n", __RV_CSR_READ(CSR_MEPC));
-    printf("MTVAL : 0x%lx\r\n", __RV_CSR_READ(CSR_MBADADDR));
+    printf("MCAUSE : 0x%lx\r\n", mcause);
+    printf("MDCAUSE: 0x%lx\r\n", __RV_CSR_READ(CSR_MDCAUSE));
+    printf("MEPC   : 0x%lx\r\n", __RV_CSR_READ(CSR_MEPC));
+    printf("MTVAL  : 0x%lx\r\n", __RV_CSR_READ(CSR_MTVAL));
     while(1);
 }
 
@@ -347,7 +348,7 @@ void _premain_init(void)
     SystemBannerPrint();
     /* Initialize exception default handlers */
     Exception_Init();
-    /* ECLIC initilization, mainly MTH and NLBIT */
+    /* ECLIC initialization, mainly MTH and NLBIT */
     ECLIC_Init();
 }
 

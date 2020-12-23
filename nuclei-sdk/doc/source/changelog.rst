@@ -3,6 +3,111 @@
 Changelog
 =========
 
+V0.3.0
+------
+
+This is official version ``0.3.0`` of Nuclei SDK.
+
+* SoC
+
+    - Add more newlib stub functions for all SoC support packages
+    - Dump extra csr ``mdcause`` in default exception handler for hbird
+    - Add Sipeed Longan Nano as new supported board
+    - Add **gd32vf103c_longan_nano** board support, contributed by `tuupola`_ and `RomanBuchert`_
+
+* Documentation
+
+    - Add ``demo_nice`` application documentation
+    - Add ``msh`` application documentation
+    - Update get started guide
+    - Add **gd32vf103c_longan_nano** board Documentation
+    - Update board documentation structure levels
+
+* Application
+
+    - Cleanup unused comments in dhrystone
+    - Add new ``demo_nice`` application to show Nuclei NICE feature
+    - Add new ``msh`` application to show RT-Thread MSH shell compoment usage
+
+* NMSIS
+
+    - Fix typo in CLICINFO_Type._reserved0 bits
+    - Fix ``__STRBT``, ``__STRHT``, ``__STRT`` and ``__USAT`` macros
+
+* OS
+
+    - Add ``msh`` compoment source code into RT-Thread RTOS source code
+    - Add ``rt_hw_console_getchar`` implementation
+
+* Build
+
+    - Add ``setup.ps1`` for setting up environment in windows powershell
+
+V0.2.9
+------
+
+This is official version ``0.2.9`` of Nuclei SDK.
+
+* SoC
+
+    - Remove ``ftdi_device_desc "Dual RS232-HS"`` line in openocd configuration.
+
+      .. note::
+
+         Newer version of RVSTAR and Hummingbird Debugger have changed the FTDI description
+         from "Dual RS232-HS" to "USB <-> JTAG-DEBUGGER", to be back-compatiable with older
+         version, we just removed this ``ftdi_device_desc "Dual RS232-HS"`` line.
+         If you want to select specified JTAG, you can add this ``ftdi_device_desc`` according
+         to your description.
+
+    - Fix typos in **system_<Device>.c**
+    - Fix gpio driver implementation bugs of hbird
+    - Enable more CSR(micfg_info, mdcfg_info, mcfg_info) show in gdb debug
+
+* Documentation
+
+    - Add more faqs
+
+* Build System
+
+    - Remove unnecessary upload gdb command
+    - Remove upload successfully message for ``make upload``
+
+
+V0.2.8
+------
+
+This is the official release version ``0.2.8`` of Nuclei SDK.
+
+* SoC
+
+    - Fixed implementation for ``_read`` newlib stub function, now scanf
+      can be used correctly for both gd32vf103 and hbird SoCs.
+
+* Misc
+
+    - Update platformio package json file according to latest platformio requirements
+
+
+V0.2.7
+------
+
+This is the official release version ``0.2.7`` of Nuclei SDK.
+
+* OS
+
+    - Fix OS portable code, configKERNEL_INTERRUPT_PRIORITY should
+      set to default 0, not 1. 0 is the lowest abs interrupt level.
+
+* Application
+
+    - Fix configKERNEL_INTERRUPT_PRIORITY in FreeRTOSConfig.h to 0
+
+* NMSIS
+
+    - Change timer abs irq level setting in function SysTick_Config from 1 to 0
+
+
 V0.2.6
 ------
 
@@ -238,3 +343,5 @@ Here are the main features of this release:
 
 
 .. _Nuclei-SDK: https://github.com/Nuclei-Software/nuclei-sdk
+.. _tuupola: https://github.com/tuupola
+.. _RomanBuchert: https://github.com/RomanBuchert
