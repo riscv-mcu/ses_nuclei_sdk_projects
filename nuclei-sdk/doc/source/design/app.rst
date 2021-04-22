@@ -397,9 +397,9 @@ For more about **NICE** feature, please click `Nuclei User Extended Introduction
     # cd to the demo_dsp directory
     cd application/baremetal/demo_nice
     # Clean the application first
-    make SOC=hbird BOARD=hbird_eval CORE=ux600 clean
+    make SOC=demosoc BOARD=nuclei_fpga_eval CORE=ux600 clean
     # Build and upload the application
-    make SOC=hbird BOARD=hbird_eval CORE=ux600 upload
+    make SOC=demosoc BOARD=nuclei_fpga_eval CORE=ux600 upload
 
 **Expected output as below:**
 
@@ -696,7 +696,7 @@ This `freertos demo application`_ is show basic freertos task functions.
 In Nuclei SDK, we provided code and Makefile for this ``freertos demo`` application.
 
 * **RTOS = FreeRTOS** is added in its Makefile to include FreeRTOS service
-* The **configTICK_RATE_HZ** in ``FreeRTOSConfig.h`` is set to 200, you can change it
+* The **configTICK_RATE_HZ** in ``FreeRTOSConfig.h`` is set to 100, you can change it
   to other number according to your requirement.
 
 **How to run this application:**
@@ -761,7 +761,7 @@ This `ucosii demo application`_ is show basic ucosii task functions.
 In Nuclei SDK, we provided code and Makefile for this ``ucosii demo`` application.
 
 * **RTOS = UCOSII** is added in its Makefile to include UCOSII service
-* The **OS_TICKS_PER_SEC** in ``os_cfg.h`` is by default set to 200, you can change it
+* The **OS_TICKS_PER_SEC** in ``os_cfg.h`` is by default set to 50, you can change it
   to other number according to your requirement.
 
 .. note:
@@ -839,7 +839,7 @@ This `rt-thread demo application`_ is show basic rt-thread thread functions.
 In Nuclei SDK, we provided code and Makefile for this ``rtthread demo`` application.
 
 * **RTOS = RTThread** is added in its Makefile to include RT-Thread service
-* The **RT_TICK_PER_SECOND** in ``rtconfig.h`` is by default set to `200`, you can change it
+* The **RT_TICK_PER_SECOND** in ``rtconfig.h`` is by default set to `100`, you can change it
   to other number according to your requirement.
 
 
@@ -904,9 +904,9 @@ In Nuclei SDK, we provided code and Makefile for this ``rtthread msh`` applicati
 
 * **RTOS = RTThread** is added in its Makefile to include RT-Thread service
 * **RTTHREAD_MSH := 1** is added in its Makefile to include RT-Thread msh component
-* The **RT_TICK_PER_SECOND** in ``rtconfig.h`` is by default set to `200`, you can change it
+* The **RT_TICK_PER_SECOND** in ``rtconfig.h`` is by default set to `100`, you can change it
   to other number according to your requirement.
-* To run this application in :ref:`design_soc_hbird`, the SoC clock frequency must be above 16MHz,
+* To run this application in :ref:`design_soc_demosoc`, the SoC clock frequency must be above 16MHz,
   if run in 8MHz, uart read is not correct due to bit error in uart rx process.
 
 **How to run this application:**
@@ -925,18 +925,32 @@ In Nuclei SDK, we provided code and Makefile for this ``rtthread msh`` applicati
 
 .. code-block:: console
 
-    Nuclei SDK Build Time: Nov 27 2020, 11:00:29
+    Nuclei SDK Build Time: Dec 23 2020, 16:39:21
     Download Mode: FLASHXIP
-    CPU Frequency 107732673 Hz
+    CPU Frequency 108810000 Hz
 
     \ | /
     - RT -     Thread Operating System
-    / | \     3.1.3 build Nov 27 2020
+    / | \     3.1.3 build Dec 23 2020
     2006 - 2019 Copyright by rt-thread team
     Hello RT-Thread!
     msh >help
     RT-Thread shell commands:
-    list_timer list_mailbox list_sem list_thread version ps help nsdk
+    list_timer       - list timer in system
+    list_mailbox     - list mail box in system
+    list_sem         - list semaphore in system
+    list_thread      - list thread
+    version          - show RT-Thread version information
+    ps               - List threads in the system.
+    help             - RT-Thread shell help.
+    nsdk             - msh nuclei sdk demo
+
+    msh >ps
+    thread   pri  status      sp     stack size max used left tick  error
+    -------- ---  ------- ---------- ----------  ------  ---------- ---
+    tshell     6  ready   0x00000178 0x00001000    09%   0x00000008 000
+    tidle      7  ready   0x00000078 0x0000018c    30%   0x00000020 000
+    main       2  suspend 0x000000b8 0x00000200    35%   0x00000013 000
     msh >nsdk
     Hello Nuclei SDK!
     msh >

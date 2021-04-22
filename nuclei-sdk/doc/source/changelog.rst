@@ -3,6 +3,48 @@
 Changelog
 =========
 
+V0.3.1
+------
+
+This is official version ``0.3.1`` of Nuclei SDK.
+
+.. caution::
+
+    - We are using ``demosoc`` to represent the Nuclei Evaluation SoC for customer to replace the old name ``hbird``.
+    - The ``hbird`` SoC is renamed to ``demosoc``, so the ``SoC/hbird`` folder is renamed to ``SoC/demosoc``,
+      and the ``SoC/hbird/Board/hbird_eval`` is renamed to ``SoC/demosoc/Board/nuclei_fpga_eval``.
+
+
+* SoC
+
+    - board: Add support for TTGO T-Display-GD32, contributed by `tuupola`_
+    - Add definitions for the Interface Association Descriptor of USB for GD32VF103, contributed by `michahoiting`_.
+    - **IMPORTANT**: ``hbird`` SoC is renamed to ``demosoc``, and ``hbird_eval`` is renamed to ``nuclei_fpga_eval``
+
+      - Please use ``SOC=demosoc BOARD=nuclei_fpga_eval`` to replace ``SOC=hbird BOARD=hbird_eval``
+      - The changes are done to not using the name already used in opensource Hummingbird E203 SoC.
+      - Now ``demosoc`` is used to represent the Nuclei Demo SoC for evaluation on Nuclei FPGA evaluation Board(MCU200T/DDR200T)
+
+* Documentation
+
+    - Update ``msh`` application documentation
+    - Add basic documentation for **TTGO T-Display-GD32**
+    - Add Platformio user guide(written in Chinese) link in get started guide contributed by Maker Young
+
+* Application
+
+    - Increase idle and finsh thread stack for RT-Thread, due to stack size is not enough for RISC-V 64bit
+    - Set rt-thread example tick hz to 100, and ucosii example tick hz to 50
+
+* Build
+
+    - Format Makefile space to tab
+    - Add $(TARGET).dasm into clean targets which are missing before
+
+* Code style
+
+    - Format source files located in application, OS, SoC, test using astyle tool
+
 V0.3.0
 ------
 
@@ -345,3 +387,4 @@ Here are the main features of this release:
 .. _Nuclei-SDK: https://github.com/Nuclei-Software/nuclei-sdk
 .. _tuupola: https://github.com/tuupola
 .. _RomanBuchert: https://github.com/RomanBuchert
+.. _michahoiting: https://github.com/michahoiting
